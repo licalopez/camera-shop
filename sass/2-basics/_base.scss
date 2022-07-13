@@ -1,0 +1,57 @@
+@use '../globals' as *;
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: $lightest;
+	font-family: $sans-serif;
+}
+
+.banner-wrapper {
+	padding: 0 $navbar-lg;
+}
+
+.wrapper {
+	margin: 0 auto;
+	width: min(90%, 75rem);
+}
+
+.btn {
+	border: none;
+	cursor: pointer;
+	font-weight: 500;
+	height: 3rem;
+	letter-spacing: 0.05rem;
+	padding: 0 1.5rem;
+	text-transform: uppercase;
+	transition: all 200ms $cubic-bezier;
+
+	&:hover,
+	&:focus-visible {
+		letter-spacing: 0.1rem;
+		outline: none;
+		transform: scale(1.05);
+	}
+
+	&-accent {
+		background-color: $accent;
+		color: $lightest;
+
+		&:hover,
+		&:focus-visible {
+			background-color: $dark;
+		}
+	}
+
+	&-dark {
+		background-color: $dark;
+		color: $lightest;
+		
+		&:hover,
+		&:focus-visible {
+			background-color: $accent;
+		}
+	}
+}
