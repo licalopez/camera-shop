@@ -1,0 +1,32 @@
+/*****************************
+         MEDIA QUERIES
+/*****************************/
+@mixin atXSmall {
+	@media only screen and (min-width: 400px) {
+		@content;
+ 	}
+}
+
+@mixin atSmall {
+	@media only screen and (min-width: 768px) {
+		@content;
+	}
+}
+
+@mixin atMedium {
+	@media only screen and (min-width: 1024px) {
+		 @content;
+	}
+}
+
+@mixin atLarge {
+	@media only screen and (min-width: 1280px) {
+		 @content;
+	}
+}
+
+@mixin atXLarge {
+	@media only screen and (min-width: 1600px) {
+		@content;
+	}
+}

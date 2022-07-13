@@ -10,13 +10,18 @@ export default {
 			options: { hotspot: true }
 		},
 		{
-			name: 'buttonText',
-			title: 'ButtonText',
+			name: 'heading',
+			title: 'Heading',
 			type: 'string'
 		},
 		{
-			name: 'product',
-			title: 'Product',
+			name: 'subheading',
+			title: 'Sub Heading',
+			type: 'string'
+		},
+		{
+			name: 'name',
+			title: 'Product Name',
 			type: 'string'
 		},
 		{
@@ -25,23 +30,8 @@ export default {
 			type: 'string'
 		},
 		{
-			name: 'smallText',
-			title: 'Small Text',
-			type: 'string'
-		},
-		{
-			name: 'midText',
-			title: 'Mid Text',
-			type: 'string'
-		},
-		{
-			name: 'largeText1',
-			title: 'Large Text 1',
-			type: 'string'
-		},
-		{
-			name: 'largeText',
-			title: 'Large Text 2',
+			name: 'buttonText',
+			title: 'Button Text',
 			type: 'string'
 		},
 		{

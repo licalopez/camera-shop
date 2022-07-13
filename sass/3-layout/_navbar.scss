@@ -1,0 +1,130 @@
+@use '../globals' as *;
+@use '../1-config/mixins';
+
+nav {
+	align-items: center;
+	background-color: $lightest;
+	display: flex;
+	height: $navbar-lg;
+	position: relative;
+	z-index: 2;
+	width: 100%;
+
+	.menu-container {
+		aspect-ratio: 1;
+		background-color: $accent;
+		height: 100%;
+		position: relative;
+		z-index: 4;
+	}
+
+	.menu-icon {
+		@include mixins.reset-btn-style;
+		cursor: pointer;
+		display: flex;
+		flex-direction: column;
+		height: 2.75rem;
+		justify-content: space-between;
+		left: 50%;
+		padding: 1rem;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 5;
+		width: 3.35rem;
+
+		&:focus-visible {
+			outline: none;
+			outline: 0.125rem solid $dark;
+		}
+
+		> * {
+			background-color: $dark;
+			height: 0.125rem;
+			transition: all 100ms $cubic-bezier;
+			width: 100%;
+		}
+
+		&.close {
+			.top-line {
+				position: relative;
+				transform: rotate(40deg);
+				top: 0.3125rem;
+			}
+
+			.middle-line {
+				height: 0;
+			}
+
+			.bottom-line {
+				position: relative;
+				transform: rotate(-40deg);
+				top: -0.25rem;
+			}
+		}
+	}
+
+	.menu-list {
+		background-color: $accent;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 14rem;
+		list-style: none;
+		max-height: max-content;
+		overflow: hidden;
+		padding: 2rem 0;
+		position: absolute;
+		top: $navbar-lg;
+		transform: translateY(0%);
+		transition: height 350ms $cubic-bezier,
+		            padding 350ms $cubic-bezier;
+		width: 100vw;
+		z-index: 4;
+
+		&.hidden {
+			height: 0;
+			padding: 0;
+			transition: height 350ms $cubic-bezier,
+			            padding 350ms $cubic-bezier;
+
+			.menu-item {
+				opacity: 0;
+				transition: opacity 50ms $cubic-bezier 50ms;
+			}
+		}
+
+		.menu-item {
+			opacity: 1;
+			padding: 0.75rem 2rem;
+
+			&:focus-visible {
+				background-color: rgba($lightest, 0.2);
+				outline: none;
+			}
+
+			a {
+				color: $dark;
+				text-decoration: none;
+			}
+		}
+	}
+
+	.brand {
+		color: $dark;
+		cursor: pointer;
+		font-weight: 400;
+		font-size: 1.4rem;
+		letter-spacing: 0.15rem;
+		margin-left: 1.75rem;
+		position: relative;
+		text-decoration: none;
+		text-transform: uppercase;
+		z-index: 5;
+		
+		span {
+			color: $accent;
+			font-weight: 700;
+		}
+	}
+}
