@@ -10,25 +10,25 @@ const Home = ({ bannerProduct, products }) => {
   return (
     <>
       <Navbar />
-      <div className="banner-wrapper">
-        <Hero product={ bannerProduct.length > 0 && bannerProduct[0] } />
-      </div>
 
       <div className="wrapper">
-        <section className="best-sellers-container">
-          <h2>Best Sellers</h2>
-          <p>Shop our top cameras and lenses</p>
-          {products.map(product => <Product key={product.slug} product={product} />)}
-          
+        <Hero product={ bannerProduct.length > 0 && bannerProduct[0] } />
+
+        <section className="best-sellers-container home-section">
+          <h2 className="best-sellers-heading home-heading">
+            Best Sellers
+          </h2>
           <div className="best-sellers-products">
-            { products.map(product => (
-              <p key={product.slug.current} className="product-name">{ product.name }</p>
-            )) }
+            {products
+              .filter((_, i) => i < 7)
+              .map(product => <Product key={product._id} product={product} />)}
           </div>
         </section>
 
-        <section className="brands-container">
-          <h2>Brand Showcase</h2>
+        <section className="brands-container home-section">
+          <h2 className="brands-heading home-heading">
+            Brand Showcase
+          </h2>
         </section>
 
         <section>

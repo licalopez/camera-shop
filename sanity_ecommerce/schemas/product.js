@@ -4,8 +4,8 @@ export default {
 	type: 'document',
 	fields: [
 		{
-			name: 'image',
-			title: 'Image',
+			name: 'images',
+			title: 'Images',
 			type: 'array',
 			of: [{ type: 'image' }],
 			options: {
@@ -20,16 +20,10 @@ export default {
 		{
 			name: 'brand',
 			title: 'Brand',
-			type: 'string',
-			options: {
-				list: [
-					{ title: 'Canon', value: 'canon' },
-					{ title: 'Nikon', value: 'nikon' },
-					{ title: 'Sony', value: 'sony' },
-					{ title: 'Leica', value: 'leica' }
-				],
-				layout: 'dropdown'
-			}
+			type: 'reference',
+			to: [
+				{ type: 'brand' }
+			]
 		},
 		{
 			name: 'slug',

@@ -48,21 +48,6 @@ const Navbar = () => {
 							</Link>
 						</li>
 					))}
-					{/* <li className="menu-item">
-						<Link href="/">
-							Home
-						</Link>
-					</li>
-					<li className="menu-item">
-						<Link href="/about">
-							About
-						</Link>
-					</li>
-					<li className="menu-item">
-						<Link href="/cart">
-							Cart
-						</Link>
-					</li> */}
 				</ul>
 			</div>
 			<Link href="/">
