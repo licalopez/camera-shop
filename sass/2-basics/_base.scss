@@ -6,17 +6,18 @@ html {
 
 body {
 	background-color: $lightest;
+	color: $dark;
 	font-family: $sans-serif;
 }
 
-.banner-wrapper {
+.wrapper {
 	padding: 0 $navbar-lg;
 }
 
-.wrapper {
-	margin: 0 auto;
-	width: min(90%, 75rem);
-}
+// .wrapper {
+// 	margin: 0 auto;
+// 	width: min(90%, 75rem);
+// }
 
 .btn {
 	border: none;

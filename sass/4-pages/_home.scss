@@ -1,0 +1,66 @@
+@use '../globals' as *;
+@use '../1-config/mixins';
+
+.home-heading {
+	font-size: 2rem;
+	font-weight: 700;
+	margin-bottom: 1.25rem;
+}
+
+/*****************************
+         best sellers
+/*****************************/
+.home-section {
+	padding: 3.5rem 0;
+}
+
+.best-sellers {
+	&-products {
+		align-items: start;
+		display: grid;
+		gap: 2.5rem;
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+.product-card {
+	@include mixins.reset-btn-style;
+	cursor: pointer;
+	transition: transform 300ms $cubic-bezier;
+
+	.product-image-container {
+		align-items: center;
+		aspect-ratio: 1;
+		background-color: rgba($light, 0.3);
+		display: flex;
+		justify-content: center;
+		margin-bottom: 0.5rem;
+		transition: background-color 300ms $cubic-bezier;
+	}
+
+	.product-image {
+		width: 70%;
+	}
+
+	&:hover,
+	&:focus-visible {
+		outline: none;
+		transform: scale(1.05);
+		transition: transform 300ms $cubic-bezier;
+
+		.product-image-container {
+			background-color: $light;
+			transition: background-color 300ms $cubic-bezier;
+		}
+	}
+
+	.product-name {
+		font-size: 1.1rem;
+		font-weight: 700;
+	}
+
+	.product-price {
+		color: rgba($dark, 0.9);
+		font-size: 1rem;
+	}
+}
