@@ -10,7 +10,7 @@
 	z-index: 2;
 	width: 100%;
 
-	.menu-container {
+	&__container {
 		aspect-ratio: 1;
 		background-color: $accent;
 		height: 100%;
@@ -18,7 +18,7 @@
 		z-index: 4;
 	}
 
-	.menu-icon {
+	&__icon {
 		@include mixins.reset-btn-style;
 		cursor: pointer;
 		display: flex;
@@ -64,7 +64,7 @@
 		}
 	}
 
-	.menu-list {
+	&__list {
 		background-color: $accent;
 		display: flex;
 		flex-direction: column;
@@ -88,13 +88,13 @@
 			transition: height 350ms $cubic-bezier,
 			            padding 350ms $cubic-bezier;
 
-			.menu-item {
+			.menu__item {
 				opacity: 0;
 				transition: opacity 50ms $cubic-bezier 50ms;
 			}
 		}
 
-		.menu-item {
+		&__item {
 			opacity: 1;
 			padding: 0.75rem 2rem;
 

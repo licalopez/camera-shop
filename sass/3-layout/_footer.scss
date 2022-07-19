@@ -1,6 +1,6 @@
 @use '../globals' as *;
 
-footer {
+.footer {
 	border-top: 1px solid $light;
 	color: $dark;
 	padding: 3rem 0 3.5rem;
@@ -9,14 +9,9 @@ footer {
 		align-items: center;
 		display: flex;
 		justify-content: space-between;
-
-		> * { 
-			// flex: 1;
-			// border: 1px solid black; 
-		}
 	}
 
-	.footer-brand {
+	&__brand {
 		color: $dark;
 		font-weight: 400;
 		font-size: 1.4rem;
@@ -29,17 +24,17 @@ footer {
 		}
 	}
 
-	.footer-payment {
+	&__payment {
 		display: flex;
 		gap: .85rem;
 		list-style: none;
 		margin-top: 0.5rem;
-	}
 
-	.footer-payment-item {
-		svg {
-			height: auto;
-			width: 2.7rem;
+		&-item {
+			svg {
+				height: auto;
+				width: 2.7rem;
+			}
 		}
 	}
 }
