@@ -16,7 +16,7 @@ const Hero = ({ product }) => {
 					<p className="hero-desc">{ product.desc }</p>
 				</div>
 				<Link href={`/product/${product._id}`}>
-					<button className="btn btn-accent">
+					<button className="btn btn__accent">
 						{ product.buttonText }
 					</button>
 				</Link>

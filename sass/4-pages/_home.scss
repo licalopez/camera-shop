@@ -15,7 +15,7 @@
          best sellers
 /*****************************/
 .best-sellers {
-	&-products {
+	&__products {
 		align-items: start;
 		display: grid;
 		gap: 2.5rem;
@@ -28,7 +28,7 @@
 	cursor: pointer;
 	transition: transform 300ms $cubic-bezier;
 
-	.product-image-container {
+	&__image-container {
 		align-items: center;
 		aspect-ratio: 1;
 		background-color: rgba($light, 0.3);
@@ -38,7 +38,7 @@
 		transition: background-color 300ms $cubic-bezier;
 	}
 
-	.product-image {
+	&__image {
 		width: 70%;
 	}
 
@@ -48,18 +48,18 @@
 		transform: scale(1.05);
 		transition: transform 300ms $cubic-bezier;
 
-		.product-image-container {
+		.product-card__image-container {
 			background-color: $light;
 			transition: background-color 300ms $cubic-bezier;
 		}
 	}
 
-	.product-name {
+	&__name {
 		font-size: 1.1rem;
 		font-weight: 700;
 	}
 
-	.product-price {
+	&__price {
 		color: rgba($dark, 0.9);
 		font-size: 1rem;
 	}
@@ -68,11 +68,13 @@
 /*****************************
         brand showcase
 /*****************************/
-.brands-container {
-	display: grid;
-	grid-template-columns: repeat(5, 1fr); 
+.brands {
+	&__container {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr); 
+	}
 
-	.brand-card {
+	&__card {
 		@include mixins.reset-btn-style;
 		align-items: center;
 		aspect-ratio: 1;
@@ -88,13 +90,13 @@
 			outline: none;
 		}
 
-		.brand-img {
+		.brands__img {
 			transition: transform 300ms $cubic-bezier;
 		}
 
 		&:focus-visible,
 		&:hover {
-			.brand-img {
+			.brands__img {
 				transform: scale(1.1);
 				transition: transform 300ms $cubic-bezier;
 			}
@@ -107,36 +109,30 @@
 /*****************************/
 .deals {
 	padding: 3.5rem 0 4rem;
-}
 
-.deals-banner {
-	aspect-ratio: 1430/550;
-	background-color: $accent;
-	display: flex;
-	// justify-content: center;
-	min-height: 28rem;
-	padding: 0 4rem;
-	position: relative;
-	width: 100%;
-
-	> * {
-		// border: 1px solid black;
+	&__banner {
+		aspect-ratio: 1430/550;
+		background-color: $accent;
+		display: flex;
+		min-height: 28rem;
+		padding: 0 4rem;
+		position: relative;
+		width: 100%;
 	}
 
-
-	.deals-text {
+	&__text {
 		margin-top: 2.5rem;
 		width: 60%;
 	}
 
-	.deals-timeframe {
+	&__timeframe {
 		color: $dark;
 		font-size: 1.25rem;
 		font-weight: 500;
 		margin-bottom: 1rem;
 	}
-	
-	.deals-heading {
+
+	&__heading {
 		color: $lightest;
 		font-size: 6.75rem;
 		font-weight: 700;
@@ -144,14 +140,14 @@
 		text-transform: uppercase;
 	}
 
-	.deals-subheading {
+	&__subheading {
 		color: $dark;
 		font-size: 1.5rem;
 		// font-weight: 500;
 		margin: 1.5rem 0 2rem;
 	}
 
-	.deals-image {
+	&__image {
 		position: absolute;
 		left: 55%;
 		// position: relative;
@@ -160,16 +156,9 @@
 		width: 40%;
 	}
 
-	.btn:hover,
-	.btn:focus-visible {
+	&__btn:hover,
+	&__btn:focus-visible {
 		background-color: $lightest;
 		color: $accent;
-	}
-
-	.footer-payment-item {
-		img {
-			height: 15px;
-			width: 25px;
-		}
 	}
 }

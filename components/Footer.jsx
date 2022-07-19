@@ -8,33 +8,33 @@ import Visa from './svg/Visa'
 
 const Footer = () => {
 	return (
-		<footer>
+		<footer className="footer">
 			<div className="wrapper">
-				<div className="footer-left">
-					<div className="footer-brand">
+				<div className="footer__left">
+					<div className="footer__brand">
 						<span>Camera</span>Shop
 					</div>
-					<p className="footer-copyright">&copy; Copyright 2022</p>
+					<p className="footer__copyright">&copy; Copyright 2022</p>
 				</div>
 
-				{/* <div className="footer-center">
-					<ul className="footer-social-icons">
+				{/* <div className="footer__center">
+					<ul className="footer__social-icons">
 					</ul>
 				</div> */}
 
-				<div className="footer-right">
+				<div className="footer__right">
 					<p>We Accept</p>
-					<ul className="footer-payment">
-						<li className="footer-payment-item">
+					<ul className="footer__payment">
+						<li className="footer__payment-item">
 							<Visa />
 						</li>
-						<li className="footer-payment-item">
+						<li className="footer__payment-item">
 							<PayPal />
 						</li>
-						<li className="footer-payment-item">
+						<li className="footer__payment-item">
 							<Mastercard />
 						</li>
-						<li className="footer-payment-item">
+						<li className="footer__payment-item">
 							<Amex />
 						</li>
 					</ul>

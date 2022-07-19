@@ -25,10 +25,10 @@ const Navbar = () => {
 
 	return (
 		<nav className="menu">
-			<div className="menu-container">
+			<div className="menu__container">
 				<button 
 					id="menu-icon"
-					className={`menu-icon ${ isMenuOpen ? 'close' : '' }`}
+					className={`menu__icon ${ isMenuOpen ? 'close' : '' }`}
 					aria-controls="menu-list"
 					aria-label={`${ isMenuOpen ? 'Close' : 'Show' } Menu`}
 					onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -39,13 +39,13 @@ const Navbar = () => {
 				</button>
 				<ul 
 					id="menu-list" 
-					className={`menu-list ${isMenuOpen ? '' : 'hidden'}`}
+					className={`menu__list ${isMenuOpen ? '' : 'hidden'}`}
 					aria-labelledby="menu-icon"
 					aria-hidden={!isMenuOpen}
 					role="dialog"
 				>
 					{MENU_LINKS.map(link => (
-						<li key={link.path} className="menu-item" tabIndex={setTabIndex(isMenuOpen)}>
+						<li key={link.path} className="menu__item" tabIndex={setTabIndex(isMenuOpen)}>
 							<Link href={link.path}>
 								{ link.page }
 							</Link>
