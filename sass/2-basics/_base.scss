@@ -55,4 +55,14 @@ body {
 			background-color: $accent;
 		}
 	}
+
+	&-light {
+		background-color: $lightest;
+		color: $accent;
+
+		&:hover,
+		&:focus-visible {
+			background-color: $dark;
+		}
+	}
 }
