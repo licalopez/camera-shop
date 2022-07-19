@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { setTabIndex } from '../helpers/setTabIndex'
 
+import ShoppingBag from './svg/ShoppingBag'
+import Search from './svg/Search'
+
 const MENU_LINKS = [
 	{
 		page: 'Home',
@@ -21,7 +24,7 @@ const Navbar = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 
 	return (
-		<nav>
+		<nav className="menu">
 			<div className="menu-container">
 				<button 
 					id="menu-icon"
@@ -50,11 +53,21 @@ const Navbar = () => {
 					))}
 				</ul>
 			</div>
+
 			<Link href="/">
 				<div className="brand">
 					<span>Camera</span>Shop
 				</div>
 			</Link>
+
+			<div className="nav-icons">
+				<button className="nav-icons__search" aria-label="Search">
+					<Search />
+				</button>
+				<button className="nav-icons__basket" aria-label="Shopping Cart">
+					<ShoppingBag />
+				</button>
+			</div>
 		</nav>
 	)
 }

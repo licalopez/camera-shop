@@ -1,6 +1,10 @@
 @use '../globals' as *;
 @use '../1-config/mixins';
 
+.home-section {
+	padding: 3.5rem 0;
+}
+
 .home-heading {
 	font-size: 2rem;
 	font-weight: 700;
@@ -10,10 +14,6 @@
 /*****************************
          best sellers
 /*****************************/
-.home-section {
-	padding: 3.5rem 0;
-}
-
 .best-sellers {
 	&-products {
 		align-items: start;
@@ -62,5 +62,114 @@
 	.product-price {
 		color: rgba($dark, 0.9);
 		font-size: 1rem;
+	}
+}
+
+/*****************************
+        brand showcase
+/*****************************/
+.brands-container {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr); 
+
+	.brand-card {
+		@include mixins.reset-btn-style;
+		align-items: center;
+		aspect-ratio: 1;
+		border: 1px solid $light;
+		cursor: pointer;
+		display: flex;
+		justify-content: center;
+		margin-right: -1px;
+		padding: .5rem 2rem;
+
+		&:focus-visible {
+			border: 2px solid $accent;
+			outline: none;
+		}
+
+		.brand-img {
+			transition: transform 300ms $cubic-bezier;
+		}
+
+		&:focus-visible,
+		&:hover {
+			.brand-img {
+				transform: scale(1.1);
+				transition: transform 300ms $cubic-bezier;
+			}
+		}
+	}
+}
+
+/*****************************
+        featured deals
+/*****************************/
+.deals {
+	padding: 3.5rem 0 4rem;
+}
+
+.deals-banner {
+	aspect-ratio: 1430/550;
+	background-color: $accent;
+	display: flex;
+	// justify-content: center;
+	min-height: 28rem;
+	padding: 0 4rem;
+	position: relative;
+	width: 100%;
+
+	> * {
+		// border: 1px solid black;
+	}
+
+
+	.deals-text {
+		margin-top: 2.5rem;
+		width: 60%;
+	}
+
+	.deals-timeframe {
+		color: $dark;
+		font-size: 1.25rem;
+		font-weight: 500;
+		margin-bottom: 1rem;
+	}
+	
+	.deals-heading {
+		color: $lightest;
+		font-size: 6.75rem;
+		font-weight: 700;
+		line-height: 5.75rem;
+		text-transform: uppercase;
+	}
+
+	.deals-subheading {
+		color: $dark;
+		font-size: 1.5rem;
+		// font-weight: 500;
+		margin: 1.5rem 0 2rem;
+	}
+
+	.deals-image {
+		position: absolute;
+		left: 55%;
+		// position: relative;
+		// left: -7%;
+		top: -12%;
+		width: 40%;
+	}
+
+	.btn:hover,
+	.btn:focus-visible {
+		background-color: $lightest;
+		color: $accent;
+	}
+
+	.footer-payment-item {
+		img {
+			height: 15px;
+			width: 25px;
+		}
 	}
 }

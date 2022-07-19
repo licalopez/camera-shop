@@ -1,20 +1,37 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
-import { client } from '../lib/client'
+import { client, urlFor } from '../lib/client'
 
-import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import Product from '../components/Product'
-import Footer from '../components/Footer'
 
-const Home = ({ bannerProduct, products }) => {
+const Home = ({ bannerProduct, brands, products }) => {
+  const renderBanner = product => (
+    <div className="deals-banner">
+      <div className="deals-text">
+        <p className="deals-timeframe">
+          { product.saleTime }
+        </p>
+        <h3 className="deals-heading">
+          { product.heading }
+        </h3>
+        <p className="deals-subheading">
+          { product.subheading }
+        </p>
+        <button className="btn btn-dark deals-btn">
+          { product.buttonText }
+        </button>
+      </div>
+      <img src={urlFor(product.image)} alt={product.name} className="deals-image" />
+    </div>
+  )
+
   return (
     <>
-      <Navbar />
-
       <div className="wrapper">
         <Hero product={ bannerProduct.length > 0 && bannerProduct[0] } />
 
-        <section className="best-sellers-container home-section">
+        <section className="best-sellers home-section">
           <h2 className="best-sellers-heading home-heading">
             Best Sellers
           </h2>
@@ -25,32 +42,46 @@ const Home = ({ bannerProduct, products }) => {
           </div>
         </section>
 
-        <section className="brands-container home-section">
+        <section className="brands home-section">
           <h2 className="brands-heading home-heading">
             Brand Showcase
           </h2>
+          <div className="brands-container">
+            {brands?.map(brand => (
+              <button className="brand-card" key={brand._id} aria-label={brand.name}>
+                <img 
+                  src={urlFor(brand.logo)}
+                  alt={`${brand.name} logo`} 
+                  className="brand-img" 
+                />
+              </button>
+            ))}
+          </div>
         </section>
 
-        <section>
-          <h2>Featured Deals</h2>
-          <p>Save on [...] from our trusted sellers</p>
+        <section className="deals home-section">
+          <h2 className="deals-heading home-heading">
+            Featured Deals
+          </h2>
+          {bannerProduct.length > 1 && bannerProduct[1] && renderBanner(bannerProduct[1])}
         </section>
       </div>
-
-      <Footer />
     </>
   )
 }
 
 export const getServerSideProps = async () => {
-  const productQuery =  `*[_type == 'product']`
-  const products = await client.fetch(productQuery)
-
   const bannerQuery = `*[_type == 'banner']`
   const bannerProduct = await client.fetch(bannerQuery)
 
+  const brandQuery = `*[_type == 'brand']`
+  const brands = await client.fetch(brandQuery)
+
+  const productQuery =  `*[_type == 'product']`
+  const products = await client.fetch(productQuery)
+
   return {
-    props: { bannerProduct, products }
+    props: { bannerProduct, brands, products }
   }
 }
 
