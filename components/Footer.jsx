@@ -14,7 +14,7 @@ const Footer = () => {
 					<div className="footer__brand">
 						<span>Camera</span>Shop
 					</div>
-					<p className="footer__copyright">&copy; Copyright 2022</p>
+					<p className="footer__copyright">&copy; Copyright 2022. All rights reserved.</p>
 				</div>
 
 				{/* <div className="footer__center">

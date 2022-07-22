@@ -45,7 +45,7 @@ const Navbar = () => {
 					role="dialog"
 				>
 					{MENU_LINKS.map(link => (
-						<li key={link.path} className="menu__item" tabIndex={setTabIndex(isMenuOpen)}>
+						<li key={link.path} className="menu__list-item" tabIndex={setTabIndex(isMenuOpen)}>
 							<Link href={link.path}>
 								{ link.page }
 							</Link>

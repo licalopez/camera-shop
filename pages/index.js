@@ -27,46 +27,44 @@ const Home = ({ bannerProduct, brands, products }) => {
   )
 
   return (
-    <>
-      <div className="wrapper">
-        <Hero product={ bannerProduct.length > 0 && bannerProduct[0] } />
+    <div className="wrapper">
+      <Hero product={ bannerProduct.length > 0 && bannerProduct[0] } />
 
-        <section className="best-sellers home-section">
-          <h2 className="home-heading">
-            Best Sellers
-          </h2>
-          <div className="best-sellers__products">
-            {products.map(product => (
-              <ProductCard key={product._id} product={product} />
-            ))}
-          </div>
-        </section>
+      <section className="best-sellers home-section">
+        <h2 className="home-heading">
+          Best Sellers
+        </h2>
+        <div className="best-sellers__products">
+          {products.map(product => (
+            <ProductCard key={product._id} product={product} />
+          ))}
+        </div>
+      </section>
 
-        <section className="brands home-section">
-          <h2 className="home-heading">
-            Brand Showcase
-          </h2>
-          <div className="brands__container">
-            {brands?.map(brand => (
-              <button className="brands__card" key={brand._id} aria-label={brand.name}>
-                <img 
-                  src={urlFor(brand.logo)}
-                  alt={`${brand.name} logo`} 
-                  className="brands__img" 
-                />
-              </button>
-            ))}
-          </div>
-        </section>
+      <section className="brands home-section">
+        <h2 className="home-heading">
+          Brand Showcase
+        </h2>
+        <div className="brands__container">
+          {brands?.map(brand => (
+            <button className="brands__card" key={brand._id} aria-label={brand.name}>
+              <img 
+                src={urlFor(brand.logo)}
+                alt={`${brand.name} logo`} 
+                className="brands__img" 
+              />
+            </button>
+          ))}
+        </div>
+      </section>
 
-        <section className="deals home-section">
-          <h2 className="home-heading">
-            Featured Deals
-          </h2>
-          {bannerProduct.length > 1 && bannerProduct[1] && renderBanner(bannerProduct[1])}
-        </section>
-      </div>
-    </>
+      <section className="deals home-section">
+        <h2 className="home-heading">
+          Featured Deals
+        </h2>
+        {bannerProduct.length > 1 && bannerProduct[1] && renderBanner(bannerProduct[1])}
+      </section>
+    </div>
   )
 }
 
@@ -77,7 +75,8 @@ export const getServerSideProps = async () => {
   const brandQuery = `*[_type == 'brand']`
   const brands = await client.fetch(brandQuery)
 
-  const productQuery =  `*[_type == 'product'][0...8]`
+  // exclude drafts from being fetched:
+  const productQuery =  `*[_type == 'product' && !(_id in path('drafts.**'))][0...8]`
   const products = await client.fetch(productQuery)
 
   return {

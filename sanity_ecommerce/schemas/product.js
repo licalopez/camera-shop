@@ -2,6 +2,7 @@ export default {
 	name: 'product',
 	title: 'Product',
 	type: 'document',
+	liveEdit: true,   // prevents drafts
 	fields: [
 		{
 			name: 'images',
@@ -44,9 +45,13 @@ export default {
 			type: 'number',
 		},
 		{
-			name: 'details',
-			title: 'Details',
-			type: 'string'
+			name: 'description',
+			title: 'Description',
+			type: 'array',
+			of: [{
+				type: 'block'
+			}],
+			styles: []
 		}
 	]
 }
