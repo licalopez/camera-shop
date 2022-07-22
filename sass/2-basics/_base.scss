@@ -8,6 +8,23 @@ body {
 	background-color: $lightest;
 	color: $dark;
 	font-family: $sans-serif;
+	min-height: 100vh;
+}
+
+.layout {
+	align-items: stretch;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	min-height: 100vh;
+
+	.main-container {
+		flex: 1;
+	}
+
+	footer {
+		flex: 0;
+	}
 }
 
 .wrapper {
@@ -36,6 +53,10 @@ body {
 		transform: scale(1.05);
 	}
 
+	&__block {
+		width: 100%;
+	}
+
 	&__accent {
 		background-color: $accent;
 		color: $lightest;
@@ -53,6 +74,18 @@ body {
 		&:hover,
 		&:focus-visible {
 			background-color: $accent;
+		}
+
+		&-outline {
+			background-color: transparent;
+			border: 2px solid $dark;
+			color: $dark;
+
+			&:hover,
+			&:focus-visible {
+				background-color: $dark;
+				color: $lightest;
+			}
 		}
 	}
 

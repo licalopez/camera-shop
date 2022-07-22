@@ -3,11 +3,12 @@ import React from 'react'
 import Link from 'next/link'
 
 import { urlFor } from '../lib/client'
+import { setTabIndex } from '../helpers/setTabIndex'
 
-const Product = ({ product: { images, name, price, slug } }) => {
+const Product = ({ product: { images, name, price, slug }, isTabbable = true }) => {
 	return (
 		<Link href={`/product/${slug.current}`}>
-			<button className="product-card" aria-labelledby="product-name">
+			<button className="product-card" aria-labelledby="product-name" tabIndex={setTabIndex(isTabbable)}>
 				<div className="product-card__image-container">
 					<img 
 						src={urlFor(images && images[0])} 
