@@ -141,6 +141,7 @@
 		@include mixins.reset-btn-style;
 		height: 3.25rem;
 		padding: 1rem;
+		position: relative;
 		width: auto;
 
 		> * {
@@ -163,4 +164,23 @@
 		}
 	}
 
+	&__basket {
+		svg {
+			height: 97%; // too tall
+		}
+	}
+
+	.nav-icons__basket-count {
+		aspect-ratio: 1;
+		background-color: $accent;
+		border-radius: 50%;
+		color: $lightest;
+		font-size: 0.8rem;
+		height: 1.3rem;
+		line-height: 1.35rem;
+		position: absolute;
+		right: 0.25rem;
+		top: 0.45rem;
+		width: 1.3rem;
+	}
 }

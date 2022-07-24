@@ -2,7 +2,6 @@ export default {
 	name: 'product',
 	title: 'Product',
 	type: 'document',
-	liveEdit: true,   // prevents drafts
 	fields: [
 		{
 			name: 'images',
