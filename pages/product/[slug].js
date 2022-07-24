@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react'
 import { client, urlFor } from '../../lib/client'
+import { useStateContext } from '../../context/stateContext'
 
 import ProductCard from '../../components/ProductCard'
 import Arrow from '../../components/svg/Arrow'
@@ -11,11 +12,13 @@ const Product = ({ product, similarProducts }) => {
 	const [isDescExpanded, setIsDescExpanded] = useState(false)
 	const [mainImgIndex, setMainImgIndex] = useState(0)
 	const [suggestionsIndex, setSuggestionsIndex] = useState(0)  // 0 or 1
+	const { onAddToCart } = useStateContext()
 
 	const renderDesc = () => {
 		let totalCharacterCount = 0
 		let paragraphsArray = []
 
+		// find cutoff for 'Read More...'
 		for (const paragraph of description) {
 			const currentParagraph = paragraph.children[0].text
 			totalCharacterCount += currentParagraph.length
@@ -77,7 +80,7 @@ const Product = ({ product, similarProducts }) => {
 					</div>
 
 					<div className="product__buttons">
-						<button className="btn btn__dark btn__block">
+						<button className="btn btn__dark btn__block" onClick={() => onAddToCart(product)}>
 							Add to Cart
 						</button>
 						<button className="btn btn__accent btn__block">

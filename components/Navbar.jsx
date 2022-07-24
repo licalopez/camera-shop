@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { setTabIndex } from '../helpers/setTabIndex'
+import { useStateContext } from '../context/stateContext'
 
 import ShoppingBag from './svg/ShoppingBag'
 import Search from './svg/Search'
@@ -22,6 +23,13 @@ const MENU_LINKS = [
 
 const Navbar = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
+	const { totalQuantities } = useStateContext()
+
+	const renderCartCount = () => (
+		<span className="nav-icons__basket-count">
+			{ totalQuantities }
+		</span>
+	)
 
 	return (
 		<nav className="menu">
@@ -66,6 +74,7 @@ const Navbar = () => {
 				</button>
 				<button className="nav-icons__basket" aria-label="Shopping Cart">
 					<ShoppingBag />
+					{ totalQuantities > 0 ? renderCartCount() : null }
 				</button>
 			</div>
 		</nav>
