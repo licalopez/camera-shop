@@ -1,7 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useCallback, useEffect, useRef } from 'react'
-import toast from 'react-hot-toast'
-import { urlFor } from '../lib/client'
 import { useStateContext } from '../context/stateContext'
 
 import CartItem from './CartItem'
@@ -9,7 +7,7 @@ import Close from './svg/Close'
 
 const Cart = () => {
 	const cartRef = useRef()
-	const { cartItems, setShowCart, showCart, totalPrice, totalQuantity } = useStateContext()
+	const { cartItems, setShowCart, showCart, totalPrice } = useStateContext()
 
 	const closeOnEscKey = useCallback(
 		event => {

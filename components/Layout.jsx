@@ -8,7 +8,7 @@ import Cart from './Cart'
 import { useStateContext } from '../context/stateContext'
 
 const Layout = ({ children }) => {
-	const {showCart} = useStateContext()
+	const { showCart } = useStateContext()
 
 	return (
 		<div className="layout">
@@ -17,9 +17,9 @@ const Layout = ({ children }) => {
 			</Head>
 			<header>
 				<Navbar />
-				{ showCart && <Cart /> }
 			</header>
-			<main className="main-container">
+			{ showCart && <Cart /> }
+			<main className="main-container" aria-hidden={showCart}>
 				{ children }
 			</main>
 			<Footer />

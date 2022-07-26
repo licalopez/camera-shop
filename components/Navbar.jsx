@@ -23,7 +23,11 @@ const MENU_LINKS = [
 
 const Navbar = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
-	const { setShowCart, totalQuantity } = useStateContext()
+	const { setShowCart, showCart, totalQuantity } = useStateContext()
+
+	const tabIndex = { 
+		tabIndex: setTabIndex(!showCart) 
+	}
 
 	const renderCartCount = () => (
 		<span className="nav-icons__cart-count">
@@ -32,7 +36,7 @@ const Navbar = () => {
 	)
 
 	return (
-		<nav className="menu">
+		<nav className="menu" aria-hidden={showCart}>
 			<div className="menu__container">
 				<button 
 					id="menu-icon"
@@ -40,6 +44,7 @@ const Navbar = () => {
 					aria-controls="menu-list"
 					aria-label={`${ isMenuOpen ? 'Close' : 'Show' } Menu`}
 					onClick={() => setIsMenuOpen(!isMenuOpen)}
+					{...tabIndex}
 				>
 					<div className="top-line"></div>
 					<div className="middle-line"></div>
@@ -53,7 +58,11 @@ const Navbar = () => {
 					role="dialog"
 				>
 					{MENU_LINKS.map(link => (
-						<li key={link.path} className="menu__list-item" tabIndex={setTabIndex(isMenuOpen)}>
+						<li 
+							key={link.path} 
+							className="menu__list-item" 
+							tabIndex={setTabIndex(isMenuOpen && !showCart)}
+						>
 							<Link href={link.path}>
 								{ link.page }
 							</Link>
@@ -69,10 +78,14 @@ const Navbar = () => {
 			</Link>
 
 			<div className="nav-icons">
-				<button className="nav-icons__search" aria-label="Search">
+				<button className="nav-icons__search" aria-label="Search" {...tabIndex}>
 					<Search />
 				</button>
-				<button className="nav-icons__cart" aria-label="Shopping Cart" onClick={() => setShowCart(true)}>
+				<button 
+					className="nav-icons__cart" 
+					aria-label="Shopping Cart" 
+					onClick={() => setShowCart(true)} {...tabIndex}
+				>
 					<ShoppingBag />
 					{ totalQuantity > 0 ? renderCartCount() : null }
 				</button>

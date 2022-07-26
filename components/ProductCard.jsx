@@ -3,12 +3,15 @@ import React from 'react'
 import Link from 'next/link'
 
 import { urlFor } from '../lib/client'
+import { useStateContext } from '../context/stateContext'
 import { setTabIndex } from '../helpers/setTabIndex'
 
 const Product = ({ product: { images, name, price, slug }, isTabbable = true }) => {
+	const { showCart } = useStateContext()
+
 	return (
 		<Link href={`/product/${slug.current}`}>
-			<button className="product-card" aria-labelledby="product-name" tabIndex={setTabIndex(isTabbable)}>
+			<button className="product-card" aria-labelledby="product-name" tabIndex={setTabIndex(isTabbable && !showCart)}>
 				<div className="product-card__image-container">
 					<img 
 						src={urlFor(images && images[0])} 
