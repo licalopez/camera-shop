@@ -164,13 +164,13 @@
 		}
 	}
 
-	&__basket {
+	&__cart {
 		svg {
 			height: 97%; // too tall
 		}
 	}
 
-	.nav-icons__basket-count {
+	.nav-icons__cart-count {
 		aspect-ratio: 1;
 		background-color: $accent;
 		border-radius: 50%;

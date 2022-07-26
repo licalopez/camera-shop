@@ -1,0 +1,226 @@
+@use '../globals' as *;
+@use '../1-config/mixins';
+
+$cart-padding-lg: 2.75rem;
+$close-btn-padding: 2rem;
+
+.cart {
+	background-color: rgba($light, 0.65);
+	height: 100%;
+	left: 0;
+	opacity: 1;
+	position: fixed;
+	top: 0;
+	transition: opacity 400ms $cubic-bezier;
+	width: 100%;
+	z-index: 5;
+
+	&__container {
+		align-items: flex-start;
+		background-color: $lightest;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		// padding: $cart-padding-lg;
+		position: fixed;
+		right: 0;
+		top: 0;
+		width: max(40%, 35rem);
+
+		> * {
+			width: 100%;
+		}
+	}
+
+	&__header {
+		align-items: center;
+		border-bottom: 1px solid $light;
+		display: flex;
+		justify-content: space-between;
+		margin-top: -$close-btn-padding;
+		min-height: $navbar-lg;
+		padding: $cart-padding-lg $cart-padding-lg 0;
+		width: 100%;
+
+		&-heading {
+			font-weight: 500;
+		}
+
+		&-close {
+			@include mixins.reset-btn-style;
+			padding: 1.25rem $close-btn-padding;
+			margin-right: -$close-btn-padding;
+	
+			svg {
+				height: 2rem;
+				stroke: $dark;
+				transition: stroke 200ms $cubic-bezier;
+			}
+
+			&:focus-visible {
+				outline: 2px solid $accent;
+
+				svg {
+					stroke: $accent;
+				}
+			}
+		}
+	}
+
+	&__body {
+		flex: 1;
+		overflow-y: scroll;
+		padding: 2rem $cart-padding-lg;
+
+		&::-webkit-scrollbar {
+			width: 0.5rem;
+		
+			&-track {
+				background: $lightest;
+			}
+		
+			&-thumb {
+				background: rgba($dark, 0.25);
+			}
+		}
+	}
+
+	&__footer {
+		border-top: 1px solid $light;
+		padding: 2rem $cart-padding-lg $cart-padding-lg;
+
+		&-subtotal {
+			align-items: center;
+			display: flex;
+			justify-content: space-between;
+
+			.subtotal-text {
+				font-weight: 700;
+				letter-spacing: 0.15rem;
+				text-transform: uppercase;
+			}
+		}
+
+		&-disclaimer {
+			color: rgba($dark, 0.8);
+			font-size: 0.9rem;
+			padding: 1rem 0.4rem;
+			text-align: center;
+		}
+	}
+}
+
+/*****************************
+           cart item
+/*****************************/
+.cart__item {
+	display: flex;
+	gap: 1.25rem;
+	margin: 2rem 0;
+
+	&:first-of-type {
+		margin-top: 0;
+	}
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+
+	&-thumbnail {
+		align-items: center;
+		aspect-ratio: 1;
+		background-color: $light;
+		display: flex;
+		justify-content: center;
+		padding: 1rem;
+		width: 30%;
+	}
+
+	&-details {
+		width: 100%;
+
+		&__name {
+			font-size: 1.15rem;
+			font-weight: 700;
+			margin-bottom: 1rem;
+		}
+
+		&__price {
+			align-items: center;
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+			
+			&__quantity-container {
+				display: flex;
+				flex-direction: column;
+
+				.quantity-form-container {
+					position: relative;
+				}
+
+				label {
+					font-size: 0.8rem;
+					line-height: 0.8rem;
+					margin-bottom: 0.25rem;
+				}
+
+				select {
+					appearance: none;  // hides default dropdown icon
+					border: 1px solid $light;
+					border-radius: 0;
+					padding: 0.5rem 2.25rem 0.5rem 1rem;
+
+					&:focus,
+					&:focus-visible {
+						outline: 2px solid $accent;
+					}
+				}
+
+				svg {
+					fill: $dark;
+					pointer-events: none;
+					user-select: none;
+					position: absolute;
+					right: 0.5rem;
+					top: 50%;
+					transform: translateY(-50%);
+					width: 0.75rem;
+				}
+			}
+		}
+
+		&__total {
+			margin-left: auto;
+			margin-right: 3rem;
+		}
+
+		&__remove {
+			@include mixins.reset-btn-style;
+			align-items: center;
+			background-color: $light;
+			border-radius: 50%;
+			display: flex;
+			height: 1.5rem;
+			justify-content: center;
+			padding: 0.1rem;
+			transition: background-color 200ms $cubic-bezier;
+			width: 1.5rem;
+
+			&:hover,
+			&:focus-visible {
+				background-color: $accent;
+				outline: none;
+				transition: background-color 200ms $cubic-bezier;
+
+				svg {
+					stroke: $lightest;
+				}
+			}
+
+			svg {
+				height: 1rem;
+				stroke: $dark;
+			}
+		}
+	}
+}

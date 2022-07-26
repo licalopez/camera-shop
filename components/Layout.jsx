@@ -5,7 +5,11 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import Cart from './Cart'
 
+import { useStateContext } from '../context/stateContext'
+
 const Layout = ({ children }) => {
+	const {showCart} = useStateContext()
+
 	return (
 		<div className="layout">
 			<Head>
@@ -13,7 +17,7 @@ const Layout = ({ children }) => {
 			</Head>
 			<header>
 				<Navbar />
-				<Cart />
+				{ showCart && <Cart /> }
 			</header>
 			<main className="main-container">
 				{ children }
