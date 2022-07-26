@@ -1,11 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import { client, urlFor } from '../lib/client'
+import { useStateContext } from '../context/stateContext'
+import { setTabIndex } from '../helpers/setTabIndex'
 
 import Hero from '../components/Hero'
 import ProductCard from '../components/ProductCard'
 
 const Home = ({ bannerProduct, brands, products }) => {
+  const { showCart } = useStateContext()
+
   const renderBanner = product => (
     <div className="deals__banner">
       <div className="deals__text">
@@ -18,7 +22,7 @@ const Home = ({ bannerProduct, brands, products }) => {
         <p className="deals__subheading">
           { product.subheading }
         </p>
-        <button className="btn btn__dark deals__btn">
+        <button className="btn btn__dark deals__btn" tabIndex={setTabIndex(!showCart)}>
           { product.buttonText }
         </button>
       </div>
@@ -47,7 +51,7 @@ const Home = ({ bannerProduct, brands, products }) => {
         </h2>
         <div className="brands__container">
           {brands?.map(brand => (
-            <button className="brands__card" key={brand._id} aria-label={brand.name}>
+            <button className="brands__card" key={brand._id} aria-label={brand.name} tabIndex={setTabIndex(!showCart)}>
               <img 
                 src={urlFor(brand.logo)}
                 alt={`${brand.name} logo`} 

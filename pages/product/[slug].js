@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { client, urlFor } from '../../lib/client'
 import { useStateContext } from '../../context/stateContext'
+import { setTabIndex } from '../../helpers/setTabIndex'
 
 import ProductCard from '../../components/ProductCard'
 import Arrow from '../../components/svg/Arrow'
@@ -12,7 +13,11 @@ const Product = ({ product, similarProducts }) => {
 	const [isDescExpanded, setIsDescExpanded] = useState(false)
 	const [mainImgIndex, setMainImgIndex] = useState(0)
 	const [suggestionsIndex, setSuggestionsIndex] = useState(0)  // 0 or 1
-	const { onAddToCart } = useStateContext()
+	const { onAddToCart, showCart } = useStateContext()
+
+	const tabIndex = {
+		tabIndex: setTabIndex(!showCart)
+	}
 
 	const renderDesc = () => {
 		let totalCharacterCount = 0
@@ -74,16 +79,21 @@ const Product = ({ product, similarProducts }) => {
 						<button  
 							className="read-more" 
 							onClick={() => setIsDescExpanded(!isDescExpanded)}
+							{...tabIndex}
 						>
 							{ isDescExpanded ? 'Show Less' : 'Read More...' }
 						</button>
 					</div>
 
 					<div className="product__buttons">
-						<button className="btn btn__dark btn__block" onClick={() => onAddToCart(product)}>
+						<button 
+							className="btn btn__dark btn__block" 
+							onClick={() => onAddToCart(product)}
+							{...tabIndex}
+						>
 							Add to Cart
 						</button>
-						<button className="btn btn__accent btn__block">
+						<button className="btn btn__accent btn__block" {...tabIndex}>
 							Buy Now
 						</button>
 					</div>
@@ -97,10 +107,18 @@ const Product = ({ product, similarProducts }) => {
 						You Might Also Like
 					</h2>
 					<div className="suggestions__arrows">
-						<button className="suggestions__arrow arrow-left" onClick={() => setSuggestionsIndex(0)}>
+						<button 
+							className="suggestions__arrow arrow-left" 
+							onClick={() => setSuggestionsIndex(0)}
+							{...tabIndex}
+						>
 							<Arrow />
 						</button>
-						<button className="suggestions__arrow arrow-right" onClick={() => setSuggestionsIndex(1)}>
+						<button 
+							className="suggestions__arrow arrow-right" 
+							onClick={() => setSuggestionsIndex(1)}
+							{...tabIndex}
+						>
 							<Arrow />
 						</button>
 					</div>

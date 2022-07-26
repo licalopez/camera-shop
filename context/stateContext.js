@@ -1,13 +1,13 @@
-import React, { createContext, useContext, useState, useEffect } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 import { toast } from 'react-hot-toast'
 
 const Context = createContext()
 
 export const StateContext = ({ children }) => {
 	const [cartItems, setCartItems] = useState([])
-	const [showCart, setShowCart] = useState(false)
 	const [totalPrice, setTotalPrice] = useState(0)
 	const [totalQuantity, setTotalQuantity] = useState(0)
+	const [showCart, setShowCart] = useState(false)
 
 	const calculateTotals = updatedCartItems => {
 		let newTotalPrice = 0
