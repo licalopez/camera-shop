@@ -23,11 +23,11 @@ const MENU_LINKS = [
 
 const Navbar = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
-	const { totalQuantities } = useStateContext()
+	const { setShowCart, totalQuantity } = useStateContext()
 
 	const renderCartCount = () => (
-		<span className="nav-icons__basket-count">
-			{ totalQuantities }
+		<span className="nav-icons__cart-count">
+			{ totalQuantity }
 		</span>
 	)
 
@@ -72,9 +72,9 @@ const Navbar = () => {
 				<button className="nav-icons__search" aria-label="Search">
 					<Search />
 				</button>
-				<button className="nav-icons__basket" aria-label="Shopping Cart">
+				<button className="nav-icons__cart" aria-label="Shopping Cart" onClick={() => setShowCart(true)}>
 					<ShoppingBag />
-					{ totalQuantities > 0 ? renderCartCount() : null }
+					{ totalQuantity > 0 ? renderCartCount() : null }
 				</button>
 			</div>
 		</nav>
