@@ -67,6 +67,13 @@ $close-btn-padding: 2rem;
 		}
 	}
 
+	form {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		width: 100%;
+	}
+
 	&__body {
 		flex: 1;
 		overflow-y: scroll;
@@ -87,6 +94,7 @@ $close-btn-padding: 2rem;
 
 	&__footer {
 		border-top: 1px solid $light;
+		font-size: 1.15rem;
 		padding: 2rem $cart-padding-lg $cart-padding-lg;
 
 		&-subtotal {
@@ -166,12 +174,14 @@ $close-btn-padding: 2rem;
 
 				select {
 					appearance: none;  // hides default dropdown icon
+					background-color: #fff;
 					border: 1px solid $light;
 					border-radius: 0;
 					padding: 0.5rem 2.25rem 0.5rem 1rem;
 
 					&:focus,
 					&:focus-visible {
+						border: 1px solid #fff;
 						outline: 2px solid $accent;
 					}
 				}
@@ -179,11 +189,11 @@ $close-btn-padding: 2rem;
 				svg {
 					fill: $dark;
 					pointer-events: none;
-					user-select: none;
 					position: absolute;
 					right: 0.5rem;
 					top: 50%;
 					transform: translateY(-50%);
+					user-select: none;
 					width: 0.75rem;
 				}
 			}
