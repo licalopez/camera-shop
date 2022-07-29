@@ -2,6 +2,7 @@
 import React from 'react'
 import { urlFor } from '../lib/client'
 import { useStateContext } from '../context/stateContext'
+import { numberWithCommas } from '../helpers/numberWithCommas'
 
 import Close from './svg/Close'
 import ChevronDown from './svg/ChevronDown'
@@ -43,7 +44,7 @@ const CartItem = ({ product }) => {
 							>
 								{loadQuantityValues(5).map(option => (
 									<option key={`option-${option.value}`} {...option}>
-										{option.value}
+										{ option.value }
 									</option>
 								))}
 							</select>
@@ -51,7 +52,7 @@ const CartItem = ({ product }) => {
 						</div>
 					</div>
 					<p className="cart__item-details__total">
-						${quantity * price}
+						${numberWithCommas((quantity * price).toFixed(2))}
 					</p>
 					<button 
 						className="cart__item-details__remove" 

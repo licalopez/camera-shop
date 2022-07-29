@@ -1,6 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useCallback, useEffect, useRef } from 'react'
+import toast from 'react-hot-toast'
 import { useStateContext } from '../context/stateContext'
+import { numberWithCommas } from '../helpers/numberWithCommas'
+import loadStripe from '../lib/loadStripe'
 
 import CartItem from './CartItem'
 import Close from './svg/Close'
@@ -19,7 +22,7 @@ const Cart = () => {
 	useEffect(() => {
 		if (showCart)
 			document.querySelector('body').style.overflowY = 'hidden'
-			return () => document.querySelector('body').style.overflowY = 'scroll'
+		return () => document.querySelector('body').style.overflowY = 'scroll'
 	}, [showCart])
 
 	// close Cart on Esc key press
@@ -27,6 +30,25 @@ const Cart = () => {
 		document.addEventListener('keydown', closeOnEscKey)
 		return () => document.removeEventListener('keydown', closeOnEscKey)
 	}, [closeOnEscKey])
+
+	const handleCheckout = async e => {
+		e.preventDefault()
+
+		const stripe = await loadStripe()	
+		const response = await fetch('/api/stripe', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(cartItems)
+		})
+
+		if (response.statusCode === 500) return
+		
+		const data = await response.json()
+		toast.loading('Redirecting...')
+		stripe.redirectToCheckout({ sessionId: data.id })
+	}
 
 	return (
 		<section className="cart" ref={cartRef} aria-hidden={!showCart} onClick={() => setShowCart(false)}>
@@ -41,7 +63,7 @@ const Cart = () => {
 				</div>
 
 				{cartItems.length > 0 ? (
-					<>
+					<form onSubmit={handleCheckout}>
 						<div className="cart__body">
 							{cartItems.map(item => <CartItem key={item._id} product={item} />)}
 						</div>
@@ -52,23 +74,22 @@ const Cart = () => {
 									Subtotal
 								</h4>
 								<p className="subtotal-amount">
-									${totalPrice}.00
+									${numberWithCommas(totalPrice.toFixed(2))}
 								</p>
 							</div>
 							<p className="cart__footer-disclaimer">
 								Shipping and discounts calculated at checkout. All orders are processed in CAD.
 							</p>
-							<button className="btn btn__dark btn__block">
-								Checkout
+							<button className="btn btn__dark btn__block" type="submit">
+								Pay with Stripe
 							</button>
 						</div>
-					</>
+					</form>
 				) : (
 					<div className="cart__body">
 						<p>Your cart is currently empty.</p>
 					</div>
 				)}
-
 			</div>
 		</section>
 	)

@@ -49,6 +49,7 @@ export const StateContext = ({ children }) => {
 
 		setTotalQuantity(totalQuantity + 1)
 		setTotalPrice(totalPrice + product.price)
+		setShowCart(true)
 	}
 
 	const onCartUpdate = (productId, updatedQuantity) => {
