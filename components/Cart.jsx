@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useCallback, useEffect, useRef } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import toast from 'react-hot-toast'
 import { useStateContext } from '../context/stateContext'
 import { numberWithCommas } from '../helpers/numberWithCommas'
@@ -9,7 +9,6 @@ import CartItem from './CartItem'
 import Close from './svg/Close'
 
 const Cart = () => {
-	const cartRef = useRef()
 	const { cartItems, setShowCart, showCart, totalPrice } = useStateContext()
 
 	const closeOnEscKey = useCallback(
@@ -51,7 +50,7 @@ const Cart = () => {
 	}
 
 	return (
-		<section className="cart" ref={cartRef} aria-hidden={!showCart} onClick={() => setShowCart(false)}>
+		<section className="cart" aria-hidden={!showCart} onClick={() => setShowCart(false)}>
 			<div className="cart__container" onClick={e => e.stopPropagation()}>
 				<div className="cart__header">
 					<h2 className="cart__header-heading">

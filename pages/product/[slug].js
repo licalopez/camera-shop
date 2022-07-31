@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react'
+import { toast } from 'react-hot-toast'
 import { client, urlFor } from '../../lib/client'
 import { useStateContext } from '../../context/stateContext'
 import { setTabIndex } from '../../helpers/setTabIndex'
@@ -13,7 +14,12 @@ const Product = ({ product, similarProducts }) => {
 	const [isDescExpanded, setIsDescExpanded] = useState(false)
 	const [mainImgIndex, setMainImgIndex] = useState(0)
 	const [suggestionsIndex, setSuggestionsIndex] = useState(0)  // 0 or 1
-	const { onAddToCart, showCart } = useStateContext()
+	const { onAddToCart, setShowCart, showCart } = useStateContext()
+
+	const handleBuyNow = () => {
+		onAddToCart(product)
+		setShowCart(true)
+	}
 
 	const tabIndex = {
 		tabIndex: setTabIndex(!showCart)
@@ -88,12 +94,19 @@ const Product = ({ product, similarProducts }) => {
 					<div className="product__buttons">
 						<button 
 							className="btn btn__dark btn__block" 
-							onClick={() => onAddToCart(product)}
+							onClick={() => {
+								onAddToCart(product)
+								toast.success(`${name} added to cart.`)
+							}}
 							{...tabIndex}
 						>
 							Add to Cart
 						</button>
-						<button className="btn btn__accent btn__block" {...tabIndex}>
+						<button 
+							className="btn btn__accent btn__block" 
+							onClick={handleBuyNow} 
+							{...tabIndex}
+						>
 							Buy Now
 						</button>
 					</div>
