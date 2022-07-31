@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import { client, urlFor } from '../lib/client'
+import Link from 'next/link'
 import { useStateContext } from '../context/stateContext'
 import { setTabIndex } from '../helpers/setTabIndex'
 
@@ -22,9 +23,11 @@ const Home = ({ bannerProduct, brands, products }) => {
         <p className="deals__subheading">
           { product.subheading }
         </p>
-        <button className="btn btn__dark deals__btn" tabIndex={setTabIndex(!showCart)}>
-          { product.buttonText }
-        </button>
+        <Link href={`/product/${product.slug.current}`}>
+          <button className="btn btn__dark deals__btn" tabIndex={setTabIndex(!showCart)}>
+            { product.buttonText }
+          </button>
+        </Link>
       </div>
       <img src={urlFor(product.image)} alt={product.name} className="deals__image" />
     </div>

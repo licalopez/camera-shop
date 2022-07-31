@@ -18,7 +18,7 @@ const Hero = ({ product }) => {
 				<div className="hero-desc-container">
 					<p className="hero-desc">{ product.desc }</p>
 				</div>
-				<Link href={`/product/${product._id}`}>
+				<Link href={`/product/${product.slug.current}`}>
 					<button className="btn btn__accent" tabIndex={setTabIndex(!showCart)}>
 						{ product.buttonText }
 					</button>
