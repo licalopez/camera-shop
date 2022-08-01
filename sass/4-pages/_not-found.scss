@@ -1,0 +1,16 @@
+@use '../globals' as *;
+
+.not-found {
+	&__heading {
+		font-weight: 700;
+		font-size: 3.5rem;
+	}
+
+	&__subheading {
+		font-size: 1.5rem;
+	}
+
+	.btn {
+		margin-top: 3rem;
+	}
+}

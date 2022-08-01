@@ -12,6 +12,7 @@ body {
 	position: relative;
 }
 
+// Ensures footer sticks to bottom of the page
 .layout {
 	align-items: stretch;
 	display: flex;
@@ -32,6 +33,25 @@ body {
 	padding: 0 $navbar-lg;
 }
 
+// Success and 404 pages
+.single-page-container {
+	text-align: center;
+
+	.wrapper {
+		margin-bottom: $navbar-lg;
+		min-height: 25rem;
+		text-align: center;
+	}
+
+	.gray-container {
+		background-color: $light;
+		height: 100%;
+		padding: 6rem 4rem;
+		width: 100%;
+	}
+}
+
+// Home and Brand pages
 .product-grid {
 	align-items: start;
 	display: grid;
@@ -39,11 +59,7 @@ body {
 	grid-template-columns: repeat(4, 1fr);
 }
 
-// .wrapper {
-// 	margin: 0 auto;
-// 	width: min(90%, 75rem);
-// }
-
+// Buttons
 .btn {
 	border: none;
 	cursor: pointer;
