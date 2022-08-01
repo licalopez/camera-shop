@@ -14,15 +14,6 @@
 /*****************************
          best sellers
 /*****************************/
-.best-sellers {
-	&__products {
-		align-items: start;
-		display: grid;
-		gap: 2.5rem;
-		grid-template-columns: repeat(4, 1fr);
-	}
-}
-
 .product-card {
 	@include mixins.reset-btn-style;
 	cursor: pointer;

@@ -41,7 +41,7 @@ const Home = ({ bannerProduct, brands, products }) => {
         <h2 className="home-heading">
           Best Sellers
         </h2>
-        <div className="best-sellers__products">
+        <div className="best-sellers__products product-grid">
           {products.map(product => (
             <ProductCard key={product._id} product={product} />
           ))}
@@ -54,13 +54,15 @@ const Home = ({ bannerProduct, brands, products }) => {
         </h2>
         <div className="brands__container">
           {brands?.map(brand => (
-            <button className="brands__card" key={brand._id} aria-label={brand.name} tabIndex={setTabIndex(!showCart)}>
-              <img 
-                src={urlFor(brand.logo)}
-                alt={`${brand.name} logo`} 
-                className="brands__img" 
-              />
-            </button>
+            <Link href={`/brand/${brand.slug.current}`} key={brand._id}>
+              <button className="brands__card" aria-label={brand.name} tabIndex={setTabIndex(!showCart)}>
+                <img 
+                  src={urlFor(brand.logo)}
+                  alt={`${brand.name} logo`} 
+                  className="brands__img" 
+                />
+              </button>
+            </Link>
           ))}
         </div>
       </section>
