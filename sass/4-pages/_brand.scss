@@ -1,0 +1,98 @@
+@use '../globals' as *;
+
+.brand {
+	// BRAND PRODUCTS
+	&__header {
+		background-color: $dark;
+		padding: 4rem 2rem;
+		color: $lightest;
+
+		&__links {
+			color: rgba($light, 0.8);
+			text-transform: lowercase;
+
+			a {
+				color: $lightest;
+
+				&:focus-visible {
+					outline: 2px solid $lightest;
+				}
+			}
+		}
+	}
+	
+	&__heading {
+		font-size: 1.75rem;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	&__products {
+		display: flex;
+		padding: $navbar-lg 0;
+		width: 100%;
+
+		&__filters {
+			border-right: 1px solid $light;
+			margin-right: 2.25rem;
+			min-width: 12rem;
+			padding-right: 2.25rem;
+
+			&-heading {
+				font-size: 1.25rem;
+				font-weight: 500;
+			}
+
+			&-list {
+				list-style: none;
+				margin: 1rem 0;
+			}
+
+			&-item {
+				margin: 0.75rem 0;
+
+				&.active {
+					a {
+						color: $accent;
+						font-weight: 700;
+					}
+				}
+				
+				a {
+					color: rgba($dark, 0.9);
+					text-decoration: none;
+					transition: color 200ms $cubic-bezier,
+											font-weight 100ms $cubic-bezier;
+
+					&:focus-visible,
+					&:hover {
+						border-bottom: 2px solid $accent;
+						color: $accent;
+						font-weight: 700;
+						outline: none;
+						transition: color 200ms $cubic-bezier,
+												font-weight 100ms $cubic-bezier;
+					}
+				}
+			}
+		}
+	}
+
+	// ERROR MESSAGE
+	&__error {
+		// margin: 2rem auto;
+		// padding: $navbar-lg;
+		text-align: left;
+		width: 100%;
+
+		&-msg {
+			font-size: 1.25rem;
+			margin-bottom: 2rem;
+		}
+
+		span {
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+	}
+}

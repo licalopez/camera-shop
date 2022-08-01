@@ -32,6 +32,13 @@ body {
 	padding: 0 $navbar-lg;
 }
 
+.product-grid {
+	align-items: start;
+	display: grid;
+	gap: 2.5rem;
+	grid-template-columns: repeat(4, 1fr);
+}
+
 // .wrapper {
 // 	margin: 0 auto;
 // 	width: min(90%, 75rem);

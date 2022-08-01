@@ -5,8 +5,9 @@ import Link from 'next/link'
 import { urlFor } from '../lib/client'
 import { useStateContext } from '../context/stateContext'
 import { setTabIndex } from '../helpers/setTabIndex'
+import { numberWithCommas } from '../helpers/numberWithCommas'
 
-const Product = ({ product: { images, name, price, slug }, isTabbable = true }) => {
+const ProductCard = ({ product: { images, name, price, slug }, isTabbable = true }) => {
 	const { showCart } = useStateContext()
 
 	return (
@@ -23,11 +24,11 @@ const Product = ({ product: { images, name, price, slug }, isTabbable = true }) 
 					{ name }
 				</h4>
 				<p className="product-card__price">
-					${ price }
+					${ numberWithCommas(price) }
 				</p>
 			</button>
 		</Link>
 	)
 }
 
-export default Product
+export default ProductCard

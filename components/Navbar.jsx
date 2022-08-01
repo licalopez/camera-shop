@@ -12,12 +12,8 @@ const MENU_LINKS = [
 		path: '/'
 	},
 	{
-		page: 'About',
-		path: '/about'
-	},
-	{
-		page: 'Cart',
-		path: '/cart'
+		page: 'Products',
+		path: '/brand/all'
 	}
 ]
 
@@ -79,7 +75,7 @@ const Navbar = () => {
 
 			<div className="nav-icons">
 				<button className="nav-icons__search" aria-label="Search" {...tabIndex}>
-					<Search />
+					{/* <Search /> */}
 				</button>
 				<button 
 					className="nav-icons__cart" 
