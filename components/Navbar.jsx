@@ -74,9 +74,9 @@ const Navbar = () => {
 			</Link>
 
 			<div className="nav-icons">
-				<button className="nav-icons__search" aria-label="Search" {...tabIndex}>
-					{/* <Search /> */}
-				</button>
+				{/* <button className="nav-icons__search" aria-label="Search" {...tabIndex}>
+					<Search />
+				</button> */}
 				<button 
 					className="nav-icons__cart" 
 					aria-label="Shopping Cart" 
