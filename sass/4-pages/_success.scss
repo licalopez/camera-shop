@@ -1,38 +1,23 @@
 @use '../globals' as *;
 
 .success {
-	text-align: center;
-
-	.wrapper {
-		margin-bottom: $navbar-lg;
-		min-height: 25rem;
-		text-align: center;
-	}
-
-	&__container {
-		background-color: $light;
-		height: 100%;
-		padding: 6rem 4rem;
-		width: 100%;
-	}
-	
 	svg {
 		margin-bottom: 1rem;
 		width: 7rem;
 	}
 	
-		&__heading {
-			font-size: 2rem;
-			font-weight: 700;
-		}
+	&__heading {
+		font-size: 2rem;
+		font-weight: 700;
+	}
 
-		&__text {
-			font-size: 1.25rem;
-			margin: 0.5rem auto;
-			width: 60%;
-		}
+	&__text {
+		font-size: 1.25rem;
+		margin: 0.5rem auto;
+		width: 60%;
+	}
 
-		.btn {
-			margin-top: 2.5rem;
-		}
+	.btn {
+		margin-top: 2.5rem;
+	}
 }

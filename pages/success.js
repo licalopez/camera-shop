@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 
 import { useStateContext } from '../context/stateContext'
@@ -17,9 +16,9 @@ const Success = () => {
 	}, [setCartItems, setTotalPrice, setTotalQuantity])
 
 	return (
-		<section className="success">
+		<section className="success single-page-container">
 			<div className="wrapper">
-				<div className="success__container">
+				<div className="success__container gray-container">
 					<Paid />
 					<h3 className="success__heading">
 						Thank you for shopping!
