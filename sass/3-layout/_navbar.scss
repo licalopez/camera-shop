@@ -73,7 +73,7 @@
 		list-style: none;
 		max-height: max-content;
 		overflow: hidden;
-		padding: 2rem 0;
+		padding: 1.3rem 0;
 		position: absolute;
 		top: $navbar-lg;
 		transform: translateY(0%);
@@ -96,16 +96,18 @@
 
 		&-item {
 			opacity: 1;
-			padding: 0.75rem 2rem;
-
-			&:focus-visible {
-				background-color: rgba($lightest, 0.2);
-				outline: none;
-			}
-
+			
 			a {
 				color: $dark;
+				display: block;
 				text-decoration: none;
+				padding: 0.5rem 2rem;
+				width: 100%;
+
+				&:focus-visible {
+					background-color: rgba($lightest, 0.2);
+					outline: none;
+				}
 			}
 		}
 	}
@@ -125,6 +127,37 @@
 		span {
 			color: $accent;
 			font-weight: 700;
+		}
+	}
+
+	// SEARCH BAR
+	.search-bar {
+		align-items: stretch;
+		border: 1px solid rgba($dark, 0.35);
+		border-radius: 0.2rem;
+		height: 3.35rem;  // same height as icons
+		display: flex;
+
+		&__input {
+			background-color: transparent;
+			border: none;
+			// border-bottom: 1px solid rgba($dark, 0.25);
+			color: rgba($dark, 0.75);
+			height: 100%;
+			padding: 0 0.75rem;
+			position: relative;
+			// top: -0.25rem;
+
+			&::placeholder {
+				color: rgba($dark, 0.75);
+			}
+
+			&:focus,
+			&:focus-visible {
+				// border-bottom: 1px solid transparent;
+				color: $dark;
+				outline-color: $accent;
+			}
 		}
 	}
 }

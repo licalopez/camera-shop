@@ -1,0 +1,106 @@
+@use '../globals' as *;
+
+.search {
+	&__header {
+		background-color: $dark;
+		min-height: 15rem;
+		text-align: center;
+	}
+
+	&__heading {
+		color: $lightest;
+		font-size: 2.85rem;
+		font-weight: 700;
+		line-height: 15rem;
+	}
+
+	.search-bar {
+		box-shadow: 0rem 0.1rem 0.45rem rgba($dark, 0.14);
+		display: flex;
+		height: 4rem;
+		margin: 0 auto;
+		max-width: 40rem;
+		position: relative;
+		top: -2rem;
+		width: 90%;
+
+		&__input {
+			background-color: #ffffff;
+			border: 1px solid rgba($dark, 0.65);
+			border: none;
+			border-radius: 0.2rem 0 0 0.2rem;
+			color: $dark;
+			flex: 1;
+			font-size: 1.25rem;
+			padding: 0.25rem 1.75rem;
+			width: 100%;
+
+			&:focus-visible {
+				border: 2px solid $accent;
+				outline: none;
+			}
+
+			&::placeholder {
+				color: rgba($dark, 0.5);
+			}
+		}
+
+		button[type="submit"] {
+			aspect-ratio: 1;
+			background-color: $accent;
+			border: 1px solid rgba($dark, 0.65);
+			border: none;
+			border-radius: 0rem 0.2rem 0.2rem 0;
+			cursor: pointer;
+
+			&:focus-visible {
+				border: 2px solid $dark;
+				outline: none;
+			}
+		}
+
+		svg {
+			height: 1.5rem;
+		}
+	}
+
+	&__no-query {
+		font-size: 1.15rem;
+		margin-bottom: 5rem;
+		text-align: center;
+
+		a {
+			color: $accent;
+		}
+	}
+
+	&__no-results {
+		margin: 2.75rem auto 3.5rem;
+		text-align: center;
+		width: 80%;
+
+		&__heading {
+			font-size: 1.75rem;
+			font-weight: 700;
+			margin-bottom: 0.7rem;
+		}
+
+		&__paragraph {
+			margin-bottom: 2.25rem;
+		}
+	}
+
+	&__results {
+		&-container {
+			margin: 1rem 0 2rem;
+			text-align: right;
+			width: 100%;
+		}
+
+		&-link {
+			color: $accent;
+			display: inline-block;
+			margin-bottom: 1.5rem;
+		}
+	}
+}
