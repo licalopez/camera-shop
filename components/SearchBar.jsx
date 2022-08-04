@@ -13,7 +13,8 @@ const SearchBar = () => {
 		e.preventDefault()
 
 		// validate that query is not an empty string/whitespace
-		if (searchQuery.trim() === '') return false
+		if (searchQuery.trim() === '') 
+			return false
 		else {
 			await router.push(`/search?q=${searchQuery}`)
 			setSearchQuery('')
@@ -35,16 +36,13 @@ const SearchBar = () => {
 				className="search-bar__input"
 				onChange={e => setSearchQuery(e.target.value)} 
 				value={searchQuery}
-				// disabled={showCart}
 				required 
 				{...setDisabled()}
 			/>
 			<button 
 				className="nav-icons__search" 
 				aria-label="Search" 
-				tabIndex={setTabIndex(true)}
 				type="submit"
-				// disabled={showCart}
 				{...setDisabled()}
 			>
 				<SearchIcon />

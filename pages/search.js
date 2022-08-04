@@ -62,7 +62,8 @@ const Search = ({ products, query }) => {
 }
 
 export const getServerSideProps = async ({ query }) => {
-	const searchQuery = `*[_type == 'product' && !(_id in path('drafts.**')) && (name match '${query.q}' || description[].children[].text match '${query.q}')]`
+	const querySansQuotes = query.q.replace(/'/g, '').replace(/"/g, '')
+	const searchQuery = `*[_type == 'product' && !(_id in path('drafts.**')) && (name match '${querySansQuotes}' || description[].children[].text match '${querySansQuotes}')]`
 	const products = query.q ? await client.fetch(searchQuery) : null
 
 	return {

@@ -6,7 +6,6 @@ import { useStateContext } from '../context/stateContext'
 
 import SearchBar from './SearchBar'
 import ShoppingBag from './svg/ShoppingBag'
-import SearchIcon from './svg/SearchIcon'
 
 const MENU_LINKS = [
 	{
@@ -23,13 +22,13 @@ const MENU_LINKS = [
 	}
 ]
 
+
 const Navbar = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
-	const [isSearchBarOpen, setIsSearchBarOpen] = useState(false)
-	// const [searchQuery, setSearchQuery] = useState('')
 	const { setShowCart, showCart, totalQuantity } = useStateContext()
 	const router = useRouter()
 
+	// close menu on route change
 	useEffect(() => {
 		setIsMenuOpen(false)
 	}, [router.asPath])
@@ -37,14 +36,6 @@ const Navbar = () => {
 	const tabIndex = { 
 		tabIndex: setTabIndex(!showCart) 
 	}
-
-	// const handleSearch = async e => {
-	// 	e.preventDefault()
-
-	// 	// validate that it's not an empty string or whitespace
-	// 	if (searchQuery.trim() === '') return false
-	// 	else router.push(`/search?q=${searchQuery}`)
-	// }
 
 	const renderCartCount = () => (
 		<span className="nav-icons__cart-count">
@@ -96,16 +87,8 @@ const Navbar = () => {
 			</Link>
 
 			<div className="nav-icons">
-				{/* { isSearchBarOpen ? <SearchBar /> : null } */}
 				<SearchBar />
-				{/* <button 
-					className="nav-icons__search" 
-					aria-label="Show Search Bar" 
-					onClick={() => setIsSearchBarOpen(true)}
-					{...tabIndex}
-				>
-					<SearchIcon />
-				</button> */}
+
 				<button 
 					className="nav-icons__cart" 
 					aria-label="Shopping Cart" 
@@ -115,20 +98,6 @@ const Navbar = () => {
 					{ totalQuantity > 0 ? renderCartCount() : null }
 				</button>
 			</div>
-
-			{/* <div className="menu__search-bar" aria-hidden={!isSearchBarOpen}>
-				<form onSubmit={handleSearch}>
-					<input 
-						type="search" 
-						name="search" 
-						id="search" 
-						placeholder="Search..." 
-						onChange={e => setSearchQuery(e.target.value)} 
-						value={searchQuery}
-						required 
-					/>
-				</form>
-			</div> */}
 		</nav>
 	)
 }
