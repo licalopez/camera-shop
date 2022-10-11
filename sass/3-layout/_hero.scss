@@ -1,47 +1,111 @@
 @use '../globals' as *;
 
-.hero-container {
+.hero {
 	background: $light;
 	color: $dark;
-	min-height: 37rem;
-	padding: 4rem;
+	min-height: none;
+	padding: 2rem 2rem 3.25rem;
 	position: relative;
 	width: 100%;
 
+	@include atSmall {
+		min-height: 37rem;
+		padding: 4rem;
+	}
+
+	.wrapper__content {
+		display: flex;
+		flex-direction: column-reverse;
+		position: relative;
+
+		@include atSmall {
+			display: block;
+		}
+	}
+
 	.text-container {
-		color: #222222;
+		color: $dark;
 		margin-top: 1.25rem;
-		max-width: 70%;
+		max-width: 100%;
+		text-align: center;
+
+		@include atSmall {
+			max-width: 70%;
+			text-align: left;
+		}
 	}
 
 	.hero-subheading {
-		font-size: 1.5rem;
+		font-size: 1.2rem;
 		font-weight: 500;
+
+		@include atSmall {
+			font-size: 1.5rem;
+		}
 	}
 
 	.hero-heading {
-		font-size: 6rem;
+		color: $dark;
+		font-size: 2.75rem;
 		font-weight: 500;
-		line-height: 7.25rem;
+		line-height: 3.5rem;
 		text-transform: uppercase;
+		width: 100%;
+
+		@include atXSmall {
+			font-size: 4rem;
+			line-height: 4.6rem;
+		}
+		@include atSmall {
+			font-size: 7rem;
+			line-height: 7.25rem;
+			width: 85%;
+		}
+		@include atMedium {
+			width: 100%;
+		}
 	}
 
 	.hero-desc-container {
+		display: none;
 		font-size: 0.9rem;
 		line-height: 1.75rem;
 		margin-top: 1rem;
-		width: 60%;
+		width: 150%;
+
+		@include atSmall {
+			display: block;
+		}
+		@include atMedium {
+			width: 60%;
+		}
 	}
 
 	.btn {
-		margin-top: 2.25rem;
+		margin-top: 1rem;
+
+		@include atSmall {
+			margin-top: 2.25rem;
+		}
 	}
 
 	.hero-image {
-		position: absolute;
-		right: 8%;
-		top: 55%;
-		transform: translateY(-50%);
-		width: min(35%, 31rem);
+		position: static;
+		margin: 0 auto;
+		width: min(80%, 14rem);
+
+		@include atSmall {
+			margin: 0;
+			position: absolute;
+			right: 0;
+			top: 32%;
+			transform: translateY(-50%);
+			width: min(40%, 33rem);
+		}
+		@include atMedium {
+			right: 8%;
+			top: 55%;
+			width: min(38%, 31rem);
+		}
 	}
 }

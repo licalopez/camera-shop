@@ -1,16 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react'
+import Head from 'next/head'
 import { toast } from 'react-hot-toast'
+
 import { client, urlFor } from '../../lib/client'
 import { useStateContext } from '../../context/stateContext'
 import { setTabIndex } from '../../helpers/setTabIndex'
+import { numberWithCommas } from '../../helpers/numberWithCommas'
 
 import ProductCard from '../../components/ProductCard'
 import Arrow from '../../components/svg/Arrow'
 
 
 const Product = ({ product, similarProducts }) => {
-	const { images, name, price, description } = product
+	const { productImage: productImages, name, price, description } = product
 	const [isDescExpanded, setIsDescExpanded] = useState(false)
 	const [mainImgIndex, setMainImgIndex] = useState(0)
 	const [suggestionsIndex, setSuggestionsIndex] = useState(0)  // 0 or 1
@@ -50,24 +53,32 @@ const Product = ({ product, similarProducts }) => {
 
 	return (
 		<div className="product wrapper">
+			<Head>
+				<title>
+					Camera Shop - {name}
+				</title>
+			</Head>
+
 			{/* --------------------------------- PRODUCT --------------------------------- */}
 			<div className="product__container">
 				<div className="product__images">
-					<div className="product__main-image">
-						<div className="product__main-image-container">
-							<img src={urlFor(images[mainImgIndex])} alt={name} />
-						</div>
+					<div className={`product__main-image-container ${productImages[mainImgIndex].isTransparent ? 'transparent-bg' : ''}`}>
+						<img 
+							src={urlFor(productImages[mainImgIndex].image)} 
+							alt={productImages[mainImgIndex].alt} 
+							className="product__main-image"
+						/>
 					</div>
 					<div className="product__thumbnails">
-						{images
+						{productImages
 							.filter((_, i) => i < 4)
-							.map((image, i) => (
+							.map((imageObj, i) => (
 								<div 
 									key={i}
-									className="product__thumbnail-container"
+									className={`product__thumbnail-container ${imageObj.isTransparent ? 'transparent-bg' : ''}`}
 									onClick={() => setMainImgIndex(i)}
 								>
-									<img src={urlFor(image)} alt={name} className="product__thumbnail" />
+									<img src={urlFor(imageObj.image)} alt={imageObj.alt} className="product__thumbnail" />
 								</div>
 						))}
 					</div>
@@ -78,7 +89,7 @@ const Product = ({ product, similarProducts }) => {
 						{ name }
 					</h1>
 					<p className="product__price">
-						$ { price }
+						${ numberWithCommas(price.toFixed(2)) }
 					</p>
 					<div className="product__details">
 						{ renderDesc() }

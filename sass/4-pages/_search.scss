@@ -5,26 +5,39 @@
 		align-items: center;
 		background-color: $dark;
 		display: flex;
-		min-height: 15rem;
+		min-height: 13rem;
+		padding: 0 1.25rem;
 		text-align: center;
+
+		@include atSmall {
+			min-height: 15rem;
+		}
 	}
 
 	&__heading {
 		color: $lightest;
-		font-size: 2.85rem;
+		font-size: 1.8rem;
 		font-weight: 700;
 		margin: 0 auto;
+
+		@include atSmall {
+			font-size: 2.85rem;
+		}
 	}
 
 	.search-bar {
 		box-shadow: 0rem 0.1rem 0.45rem rgba($dark, 0.14);
 		display: flex;
-		height: 4rem;
+		height: 3.25rem;
 		margin: 0 auto;
 		max-width: 40rem;
 		position: relative;
 		top: -2rem;
 		width: 90%;
+
+		@include atSmall {
+			height: 4rem;
+		}
 
 		&__input {
 			background-color: #ffffff;
@@ -34,8 +47,12 @@
 			color: $dark;
 			flex: 1;
 			font-size: 1.25rem;
-			padding: 0.25rem 1.75rem;
+			padding: 0.25rem 1.25rem;
 			width: 100%;
+
+			@include atSmall {
+				padding: 0.25rem 1.75rem;
+			}
 
 			&:focus-visible {
 				border: 2px solid $accent;
@@ -62,7 +79,11 @@
 		}
 
 		svg {
-			height: 1.5rem;
+			height: 1.25rem;
+
+			@include atSmall {
+				height: 1.5rem;
+			}
 		}
 	}
 
@@ -77,14 +98,19 @@
 	}
 
 	&__no-results {
-		margin: 2.75rem auto 3.5rem;
+		margin: 2.75rem auto 5.5rem;
 		text-align: center;
 		width: 80%;
 
 		&__heading {
 			font-size: 1.75rem;
 			font-weight: 700;
+			line-height: 1.25;
 			margin-bottom: 0.7rem;
+
+			@include atSmall {
+				line-height: 1.5;
+			}
 		}
 
 		&__paragraph {
@@ -94,15 +120,23 @@
 
 	&__results {
 		&-container {
-			margin: 1rem 0 2rem;
+			margin: 0.25rem 0 4rem;
 			text-align: right;
 			width: 100%;
+			
+			@include atSmall {
+				margin: 1rem 0 2rem;
+			}
 		}
 
 		&-link {
 			color: $accent;
 			display: inline-block;
-			margin-bottom: 1.5rem;
+			margin-bottom: 1rem;
+
+			@include atSmall {
+				margin-bottom: 1.5rem;
+			}
 		}
 	}
 }

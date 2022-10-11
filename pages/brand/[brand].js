@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
+import Head from 'next/head'
 
 import { client } from '../../lib/client'
 import { setTabIndex } from '../../helpers/setTabIndex'
 import { useStateContext } from '../../context/stateContext'
 import ProductCard from '../../components/ProductCard'
+import ChevronDown from '../../components/svg/ChevronDown'
 
 
 const Brand = ({ brandName, brands, products }) => {
 	const { showCart } = useStateContext()
+	const [showFilters, setShowFilters] = useState(false)
 
 	// ----------------------------- NO RESULTS ----------------------------- //
 	const renderNoResults = () => (
@@ -26,11 +29,16 @@ const Brand = ({ brandName, brands, products }) => {
 
 	return (
 		<section className="brand">
+			<Head>
+				<title>
+					Camera Shop - Browse products for {brandName === 'all' ? 'all brands' : brandName}
+				</title>
+			</Head>
 			<div className="wrapper">
 				<div className="brand__container">
-					<div className="brand__container">
-						{/* ----------------------------- HEADER ----------------------------- */}
-						<div className="brand__header">
+					{/* ----------------------------- HEADER ----------------------------- */}
+					<div className="brand__header">
+						<div className="wrapper__content">
 							<h1 className="brand__heading">
 								{brandName === 'all' 
 									? `Shop All Brands: Featured Products`
@@ -46,14 +54,27 @@ const Brand = ({ brandName, brands, products }) => {
 								)
 								: null}
 						</div>
+					</div>
 
+					<div className="wrapper__content">
 						<div className="brand__products">
 							{/* ----------------------------- BRAND FILTERS ----------------------------- */}
 							<div className="brand__products__filters">
 								<h3 className="brand__products__filters-heading">
-									Brands
+									Brands 
+
+									<span 
+										aria-label={showFilters ? 'Hide brand filters' : 'Show brand filters'}
+										className={`chevron ${showFilters ? 'hide-filters' : ''}`}
+										onClick={() => setShowFilters(!showFilters)}
+									>
+										<ChevronDown />
+									</span>
 								</h3>
-								<ul className="brand__products__filters-list">
+								<ul 
+									aria-hidden={showFilters ? false : true}
+									className={`brand__products__filters-list ${!showFilters ? 'hide' : ''}`}
+								>
 									{brands.map(brand => (
 										<li 
 											key={brand._id}

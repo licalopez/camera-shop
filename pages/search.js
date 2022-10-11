@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Head from 'next/head'
 import { client } from '../lib/client'
 import { useStateContext } from '../context/stateContext'
 import { setTabIndex } from '../helpers/setTabIndex';
@@ -29,6 +30,11 @@ const Search = ({ products, query }) => {
 
 	const renderSearchResults = () => (
 		<>
+			<Head>
+				<title>
+					Camera Shop - Search results for {query}
+				</title>
+			</Head>
 			<Link href="/brand/all">
 				<a tabIndex={setTabIndex(!showCart)} className="search__results-link">
 					View all products
@@ -51,10 +57,12 @@ const Search = ({ products, query }) => {
 
 				<SearchBar />
 
-				<div className="search__results-container">
-					{ query && products?.length > 0 ? renderSearchResults()
-					: query && products?.length === 0 ? renderNoResultsFound()
-					: <p className="search__no-query">or view all our available products <Link href="/brand/all">here</Link>.</p>}
+				<div className="wrapper__content">
+					<div className="search__results-container">
+						{ query && products?.length > 0 ? renderSearchResults()
+						: query && products?.length === 0 ? renderNoResultsFound()
+						: <p className="search__no-query">or view all our available products <Link href="/brand/all">here</Link>.</p>}
+					</div>
 				</div>
 			</div>
 		</section>
@@ -62,7 +70,7 @@ const Search = ({ products, query }) => {
 }
 
 export const getServerSideProps = async ({ query }) => {
-	const querySansQuotes = query.q.replace(/'/g, '').replace(/"/g, '')
+	const querySansQuotes = query?.q?.replace(/'/g, '').replace(/"/g, '')
 	const searchQuery = `*[_type == 'product' && !(_id in path('drafts.**')) && (name match '${querySansQuotes}' || description[].children[].text match '${querySansQuotes}')]`
 	const products = query.q ? await client.fetch(searchQuery) : null
 

@@ -17,6 +17,14 @@ export default {
 			],
 		},
 		{
+			name: 'productImage',
+			title: 'Product Images',
+			type: 'array',
+			of: [
+				{ type: 'productImage' }
+			]
+		},
+		{
 			name: 'name',
 			title: 'Name',
 			type: 'string'

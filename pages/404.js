@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import Link from 'next/link'
 import { setTabIndex } from '../helpers/setTabIndex'
 import { useStateContext } from '../context/stateContext'
@@ -8,6 +9,10 @@ const NotFound = () => {
 
 	return (
 		<section className="not-found single-page-container">
+			<Head>
+				<title>Camera Shop - 404 Page not found</title>
+			</Head>
+
 			<div className="wrapper">
 				<div className="not-found__container gray-container">
 					<h1 className="not-found__heading">

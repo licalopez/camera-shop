@@ -30,7 +30,37 @@ body {
 }
 
 .wrapper {
-	padding: 0 $navbar-lg;
+	// padding: 0 5vw;
+	padding: 0 $navbar-default - 1.2rem;
+
+	@include atXSmall {
+		padding: 0 $navbar-xs;
+	}
+	@include atSmall {
+		padding: 0 $navbar-lg;
+	}
+
+	&__content {
+		margin: 0 auto;
+		max-width: 75rem;
+		// max-width: 100rem;
+	}
+}
+
+.header-wrapper {
+	padding: 0 $navbar-default;
+
+	@include atXSmall {
+		padding: 0 $navbar-xs;
+	}
+	@include atSmall {
+		padding: 0 $navbar-lg;
+	}
+
+	&__content {
+		margin: 0 auto;
+		max-width: 100rem;
+	}
 }
 
 // Success and 404 pages
@@ -38,37 +68,70 @@ body {
 	text-align: center;
 
 	.wrapper {
-		margin-bottom: $navbar-lg;
+		margin-bottom: $navbar-default;
 		min-height: 25rem;
 		text-align: center;
+
+		@include atXSmall {
+			margin-bottom: $navbar-xs;
+		}
+		@include atSmall {
+			margin-bottom: $navbar-lg;
+		}
 	}
 
 	.gray-container {
 		background-color: $light;
 		height: 100%;
-		padding: 6rem 4rem;
+		padding: 2rem 1.25rem;
 		width: 100%;
+
+		@include atSmall {
+			padding: 6rem 4rem;
+		}
 	}
 }
 
-// Home and Brand pages
+// Home, Brand and Search pages
 .product-grid {
 	align-items: start;
 	display: grid;
-	gap: 2.5rem;
-	grid-template-columns: repeat(4, 1fr);
+	gap: 1rem;
+	grid-template-columns: repeat(2, 1fr);
+
+	@include atSmall {
+		gap: 1.5rem;
+		grid-template-columns: repeat(3, 1fr);
+	}
+	@include atMedium {
+		gap: 2.5rem;
+		grid-template-columns: repeat(4, 1fr);
+	}
+	@include atXLarge {
+		// grid-template-columns: repeat(5, 1fr);
+	}
 }
 
 // Buttons
 .btn {
 	border: none;
 	cursor: pointer;
+	font-size: 0.8rem;
 	font-weight: 500;
 	height: 3rem;
-	letter-spacing: 0.05rem;
-	padding: 0 1.5rem;
+	letter-spacing: 0.03rem;
+	padding: 0 1rem;
 	text-transform: uppercase;
 	transition: all 200ms $cubic-bezier;
+
+	@include atXSmall {
+		font-size: 0.9rem;
+	}
+	@include atSmall {
+		font-size: 1rem;
+		letter-spacing: 0.05rem;
+		padding: 0 1.5rem;
+	}
 
 	&:hover,
 	&:focus-visible {

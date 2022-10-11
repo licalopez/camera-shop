@@ -4,8 +4,12 @@
 	// BRAND PRODUCTS
 	&__header {
 		background-color: $dark;
-		padding: 4rem 2rem;
+		padding: 3rem 2rem;
 		color: $lightest;
+
+		@include atXSmall {
+			padding: 4rem 2rem;
+		}
 
 		&__links {
 			color: rgba($light, 0.8);
@@ -29,26 +33,79 @@
 
 	&__products {
 		display: flex;
-		padding: 3.5rem 0;
+		flex-direction: column;
+		padding: 2.5rem 0 4rem;
 		width: 100%;
 
+		@include atSmall {
+			flex-direction: row;
+		}
+
 		&__filters {
-			border-right: 1px solid $light;
-			margin-right: 2.25rem;
+			border: none;
+			border-bottom: 1px solid $light;
+			border-top: 1px solid $light;
+			margin-bottom: 2rem;
+			margin-right: 0;
 			min-width: 12rem;
-			padding-right: 2.25rem;
+			padding: 0.75rem 2.25rem 0.5rem 0;
+
+			@include atSmall {
+				border: none;
+				border-right: 1px solid $light;
+				margin-right: 2.25rem;
+				padding: 0 2.25rem 0 0;
+			}
 
 			&-heading {
 				font-size: 1.25rem;
 				font-weight: 500;
+
+				.chevron {
+					padding: 0.5rem 2rem 0.5rem 0.3rem;
+
+					svg {
+						fill: $dark;
+						height: 1.25rem;
+						line-height: 1.25rem;
+						position: relative;
+						top: 0.125rem;
+						transition: transform 300ms $cubic-bezier;
+					}
+
+					&.hide-filters {
+						svg {
+							transform: rotate(-180deg);
+						}
+					}
+
+					@include atSmall {
+						display: none;
+					}
+				}
 			}
 
 			&-list {
+				height: 11.25rem;
 				list-style: none;
-				margin: 1rem 0;
+				margin: 0.5rem 0;
+				min-height: max-content;
+				overflow-y: hidden;
+				transition: height 200ms $cubic-bezier;
+
+				&.hide {
+					height: 0;
+					transition: height 200ms $cubic-bezier;
+				}
+
+				@include atSmall {
+					height: max-content!important;  // override .hide styles on larger displays
+					margin: 1rem 0;
+				}
 			}
 
 			&-item {
+				font-size: 1rem;
 				margin: 0.75rem 0;
 
 				&.active {

@@ -5,17 +5,30 @@
 	align-items: center;
 	background-color: $lightest;
 	display: flex;
-	height: $navbar-lg;
+	height: $navbar-default;
 	position: relative;
 	z-index: 2;
 	width: 100%;
 
+	@include atXSmall {
+		height: $navbar-xs;
+	}
+	@include atSmall {
+		height: $navbar-lg;
+	}
+
 	&__container {
 		aspect-ratio: 1;
-		background-color: $accent;
+		background-color: transparent;
 		height: 100%;
+		margin-left: $navbar-default - 1.8rem;
 		position: relative;
 		z-index: 4;
+
+		@include atXSmall {
+			background-color: $accent;
+			margin-left: 0;
+		}
 	}
 
 	&__icon {
@@ -31,7 +44,11 @@
 		top: 50%;
 		transform: translate(-50%, -50%);
 		z-index: 5;
-		width: 3.35rem;
+		width: 3.18rem;
+
+		@include atXSmall {
+			width: 3.35rem;
+		}
 
 		&:focus-visible {
 			outline: none;
@@ -49,7 +66,7 @@
 			.top-line {
 				position: relative;
 				transform: rotate(40deg);
-				top: 0.3125rem;
+				top: 0.37rem;
 			}
 
 			.middle-line {
@@ -75,12 +92,19 @@
 		overflow: hidden;
 		padding: 1.3rem 0;
 		position: absolute;
-		top: $navbar-lg;
+		top: $navbar-default;
 		transform: translateY(0%);
 		transition: height 350ms $cubic-bezier,
 		            padding 350ms $cubic-bezier;
 		width: 100vw;
 		z-index: 4;
+
+		@include atXSmall {
+			top: $navbar-xs;
+		}
+		@include atSmall {
+			top: $navbar-lg;
+		}
 
 		&.hidden {
 			height: 0;
@@ -116,13 +140,22 @@
 		color: $dark;
 		cursor: pointer;
 		font-weight: 400;
-		font-size: 1.4rem;
-		letter-spacing: 0.15rem;
-		margin-left: 1.75rem;
+		font-size: 1.2rem;
+		letter-spacing: 0.1rem;
+		margin-left: 0.25rem;
 		position: relative;
 		text-decoration: none;
 		text-transform: uppercase;
 		z-index: 5;
+
+		@include atXSmall {
+			font-size: 1.4rem;
+			margin-left: 0.75rem;
+		}
+		@include atSmall {
+			letter-spacing: 0.15rem;
+			margin-left: 1.75rem;
+		}
 		
 		span {
 			color: $accent;
@@ -135,8 +168,12 @@
 		align-items: stretch;
 		border: 1px solid rgba($dark, 0.35);
 		border-radius: 0.2rem;
-		height: 3.35rem;  // same height as icons
-		display: flex;
+		display: none;
+		height: 3.35rem;  // a little bigger than .nav-icon buttons
+
+		@include atSmall {
+			display: flex;
+		}
 
 		&__input {
 			background-color: transparent;
@@ -165,7 +202,14 @@
 	gap: .75rem;
 	height: 100%;
 	margin-left: auto;
-	margin-right: $navbar-lg - 1rem;  // offset button's 1rem right padding
+	margin-right: $navbar-default - 1.7rem;  // offset button's 1.8rem right padding
+
+	@include atXSmall {
+		margin-right: $navbar-xs - 1rem;  // offset button's 1rem right padding
+	}
+	@include atSmall {
+		margin-right: $navbar-lg - 1rem;
+	}
 
 	button {
 		@include mixins.reset-btn-style;
@@ -210,7 +254,11 @@
 		line-height: 1.35rem;
 		position: absolute;
 		right: 0.25rem;
-		top: 0.45rem;
+		top: 0.65rem;
 		width: 1.3rem;
+
+		@include atXSmall {
+			top: 0.45rem;
+		}
 	}
 }

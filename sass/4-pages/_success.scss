@@ -2,22 +2,51 @@
 
 .success {
 	svg {
-		margin-bottom: 1rem;
-		width: 7rem;
+		margin-bottom: 0.5rem;
+		width: 5rem;
+
+		@include atSmall {
+			margin-bottom: 1rem;
+			width: 7rem;
+		}
 	}
 	
 	&__heading {
-		font-size: 2rem;
+		font-size: 1.3rem;
 		font-weight: 700;
+
+		@include atXSmall {
+			font-size: 1.5rem;
+		}
+		@include atSmall {
+			font-size: 2rem;
+		}
 	}
 
 	&__text {
-		font-size: 1.25rem;
-		margin: 0.5rem auto;
-		width: 60%;
+		font-size: 0.93rem;
+		margin: 0.75rem auto 0.5rem;
+		width: 100%;
+
+		@include atXSmall {
+			font-size: 1.03rem;
+			width: 90%;
+		}
+		@include atSmall {
+			font-size: 1.25rem;
+			margin: 0.5rem auto;
+			width: 60%;
+		}
 	}
 
 	.btn {
-		margin-top: 2.5rem;
+		margin-top: 1.5rem;
+
+		@include atXSmall {
+			margin-top: 1.75rem;
+		}
+		@include atSmall {
+			margin-top: 2.5rem;
+		}
 	}
 }

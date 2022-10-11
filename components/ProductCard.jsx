@@ -7,17 +7,18 @@ import { useStateContext } from '../context/stateContext'
 import { setTabIndex } from '../helpers/setTabIndex'
 import { numberWithCommas } from '../helpers/numberWithCommas'
 
-const ProductCard = ({ product: { images, name, price, slug }, isTabbable = true }) => {
+const ProductCard = ({ product: { productImage: productImages, name, price, slug }, isTabbable = true }) => {
 	const { showCart } = useStateContext()
+	const imageObj = productImages[0]
 
 	return (
 		<Link href={`/product/${slug.current}`}>
 			<button className="product-card" aria-labelledby="product-name" tabIndex={setTabIndex(isTabbable && !showCart)}>
 				<div className="product-card__image-container">
 					<img 
-						src={urlFor(images && images[0])} 
+						src={urlFor(productImages && imageObj?.image)} 
 						className="product-card__image"
-						alt={name} 
+						alt={imageObj?.alt} 
 					/>
 				</div>
 				<h4 id="product-name" className="product-card__name">

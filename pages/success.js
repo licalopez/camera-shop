@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
+import Head from 'next/head'
 import Link from 'next/link'
-
 import { useStateContext } from '../context/stateContext'
 import { setTabIndex } from '../helpers/setTabIndex'
 import Paid from '../components/svg/Paid';
@@ -17,6 +17,11 @@ const Success = () => {
 
 	return (
 		<section className="success single-page-container">
+			<Head>
+				<title>
+					Camera Shop - Payment successful
+				</title>
+			</Head>
 			<div className="wrapper">
 				<div className="success__container gray-container">
 					<Paid />

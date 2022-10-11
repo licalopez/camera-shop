@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
+import Head from 'next/head'
 import { client, urlFor } from '../lib/client'
 import Link from 'next/link'
 import { useStateContext } from '../context/stateContext'
@@ -13,66 +14,76 @@ const Home = ({ bannerProduct, brands, products }) => {
 
   const renderBanner = product => (
     <div className="deals__banner">
-      <div className="deals__text">
-        <p className="deals__timeframe">
-          { product.saleTime }
-        </p>
-        <h3 className="deals__heading">
-          { product.heading }
-        </h3>
-        <p className="deals__subheading">
-          { product.subheading }
-        </p>
-        <Link href={`/product/${product.slug.current}`}>
-          <button className="btn btn__dark deals__btn" tabIndex={setTabIndex(!showCart)}>
-            { product.buttonText }
-          </button>
-        </Link>
+      <div className="wrapper__content">
+        <div className="deals__text">
+          <p className="deals__timeframe">
+            { product.saleTime }
+          </p>
+          <h3 className="deals__heading">
+            { product.heading }
+          </h3>
+          <p className="deals__subheading">
+            { product.subheading }
+          </p>
+          <Link href={`/product/${product.slug.current}`}>
+            <button className="btn btn__dark deals__btn" tabIndex={setTabIndex(!showCart)}>
+              { product.buttonText }
+            </button>
+          </Link>
+        </div>
+        <img src={urlFor(product.image)} alt={product.name} className="deals__image" />
       </div>
-      <img src={urlFor(product.image)} alt={product.name} className="deals__image" />
     </div>
   )
 
   return (
     <div className="wrapper">
+      <Head>
+        <title>
+          Camera Shop - Your source for Film, Digital and Video Cameras
+        </title>
+      </Head>
+
       <Hero product={ bannerProduct.length > 0 && bannerProduct[0] } />
 
-      <section className="best-sellers home-section">
-        <h2 className="home-heading">
-          Best Sellers
-        </h2>
-        <div className="best-sellers__products product-grid">
-          {products.map(product => (
-            <ProductCard key={product._id} product={product} />
-          ))}
-        </div>
-      </section>
+      <div className="wrapper__content">
+        <section className="best-sellers home-section">
+          <h2 className="home-heading">
+            Best Sellers
+          </h2>
+          <div className="best-sellers__products product-grid">
+            {products.map(product => (
+              <ProductCard key={product._id} product={product} />
+            ))}
+          </div>
+        </section>
 
-      <section className="brands home-section">
-        <h2 className="home-heading">
-          Brand Showcase
-        </h2>
-        <div className="brands__container">
-          {brands?.map(brand => (
-            <Link href={`/brand/${brand.slug.current}`} key={brand._id}>
-              <button className="brands__card" aria-label={brand.name} tabIndex={setTabIndex(!showCart)}>
-                <img 
-                  src={urlFor(brand.logo)}
-                  alt={`${brand.name} logo`} 
-                  className="brands__img" 
-                />
-              </button>
-            </Link>
-          ))}
-        </div>
-      </section>
+        <section className="brands home-section">
+          <h2 className="home-heading">
+            Brand Showcase
+          </h2>
+          <div className="brands__container">
+            {brands?.map(brand => (
+              <Link href={`/brand/${brand.slug.current}`} key={brand._id}>
+                <button className="brands__card" aria-label={brand.name} tabIndex={setTabIndex(!showCart)}>
+                  <img 
+                    src={urlFor(brand.logo)}
+                    alt={`${brand.name} logo`} 
+                    className="brands__img" 
+                  />
+                </button>
+              </Link>
+            ))}
+          </div>
+        </section>
 
-      <section className="deals home-section">
-        <h2 className="home-heading">
-          Featured Deals
-        </h2>
-        {bannerProduct.length > 1 && bannerProduct[1] && renderBanner(bannerProduct[1])}
-      </section>
+        <section className="deals home-section">
+          <h2 className="home-heading">
+            Featured Deals
+          </h2>
+          {bannerProduct.length > 1 && bannerProduct[1] && renderBanner(bannerProduct[1])}
+        </section>
+      </div>
     </div>
   )
 }

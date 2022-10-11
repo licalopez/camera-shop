@@ -52,7 +52,7 @@ const CartItem = ({ product }) => {
 						</div>
 					</div>
 					<p className="cart__item-details__total">
-						${numberWithCommas((quantity * price).toFixed(2))}
+						${numberWithCommas((quantity * price))}
 					</p>
 					<button 
 						className="cart__item-details__remove" 

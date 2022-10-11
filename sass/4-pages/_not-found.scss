@@ -3,14 +3,26 @@
 .not-found {
 	&__heading {
 		font-weight: 700;
-		font-size: 3.5rem;
+		font-size: 2.85rem;
+
+		@include atXSmall {
+			font-size: 3.5rem;
+		}
 	}
 
 	&__subheading {
-		font-size: 1.5rem;
+		font-size: 1rem;
+
+		@include atSmall {
+			font-size: 1.5rem;
+		}
 	}
 
 	.btn {
-		margin-top: 3rem;
+		margin-top: 2.25rem;
+
+		@include atSmall {
+			margin-top: 3rem;
+		}
 	}
 }

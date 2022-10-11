@@ -62,7 +62,20 @@
 .brands {
 	&__container {
 		display: grid;
-		grid-template-columns: repeat(5, 1fr); 
+		grid-template-columns: repeat(2, 1fr); 
+
+		@include atXSmall {
+			grid-template-columns: repeat(3, 1fr); 
+		}
+		@include atSmall {
+			grid-template-columns: repeat(4, 1fr); 
+		}
+		@include atMedium {
+			grid-template-columns: repeat(5, 1fr); 
+		}
+		@include atXLarge {
+			grid-template-columns: repeat(7, 1fr);
+		}
 	}
 
 	&__card {
@@ -74,7 +87,14 @@
 		display: flex;
 		justify-content: center;
 		margin-right: -1px;
-		padding: .5rem 2rem;
+		padding: .5rem 1rem;
+
+		@include atXSmall {
+			padding: .5rem 1.5rem;
+		}
+		@include atSmall {
+			padding: .5rem 2rem;
+		}
 
 		&:focus-visible {
 			border: 2px solid $accent;
@@ -99,52 +119,120 @@
         featured deals
 /*****************************/
 .deals {
-	padding: 3.5rem 0 4rem;
+	padding: 1.75rem 0 2.5rem;
+
+	@include atSmall {
+		padding: 3.5rem 0 4rem;
+	}
 
 	&__banner {
-		aspect-ratio: 1430/550;
 		background-color: $accent;
-		display: flex;
-		min-height: 28rem;
-		padding: 0 4rem;
+		min-height: none;
+		padding: 1rem 1rem 2rem;
 		position: relative;
 		width: 100%;
+
+		@include atSmall {
+			// aspect-ratio: 1430/550;
+			min-height: 28rem;
+			padding: 2.5rem 4rem;
+		}
+	}
+
+	.wrapper__content {
+		display: flex;
+		flex-direction: column-reverse;
+		height: 100%;
+		position: relative;
+		width: 100%;
+
+		@include atSmall {
+			flex-direction: row;
+		}
 	}
 
 	&__text {
-		margin-top: 2.5rem;
-		width: 60%;
+		margin-top: 0.75rem;
+		text-align: center;
+		width: 100%;
+
+		@include atXSmall {
+			margin-top: 0.8rem;
+		}
+		@include atSmall {
+			margin-top: 0;
+			text-align: left;
+			width: 50%;
+		}
 	}
 
 	&__timeframe {
 		color: $dark;
-		font-size: 1.25rem;
+		font-size: 1.15rem;
 		font-weight: 500;
-		margin-bottom: 1rem;
+		margin-bottom: 0.25rem;
+
+		@include atXSmall {
+			margin-bottom: 0.75rem;
+		}
+		@include atSmall {
+			font-size: 1.25rem;
+			margin-bottom: 1rem;
+		}
 	}
 
 	&__heading {
 		color: $lightest;
-		font-size: 6.75rem;
+		font-size: 2.9rem;
 		font-weight: 700;
-		line-height: 5.75rem;
+		line-height: 2.75rem;
 		text-transform: uppercase;
+
+		@include atXSmall {
+			font-size: 3.8rem;
+			line-height: 3.5rem;
+		}
+		@include atSmall {
+			font-size: 6.5rem;
+			line-height: 5.5rem;
+		}
+		@include atMedium {
+			font-size: 7.5rem;
+			line-height: 6.5rem;
+		}
 	}
 
 	&__subheading {
 		color: $dark;
-		font-size: 1.5rem;
-		// font-weight: 500;
-		margin: 1.5rem 0 2rem;
+		font-size: 1.05rem;
+		margin: 1rem 0 1.5rem;
+
+		@include atSmall {
+			font-size: 1.5rem;
+			margin: 1.5rem 0 2rem;
+		}
 	}
 
 	&__image {
-		position: absolute;
-		left: 55%;
-		// position: relative;
-		// left: -7%;
-		top: -12%;
-		width: 40%;
+		position: relative;
+		right: -50%;
+		transform: translate(-50%, 0);
+		width: 60%;
+
+		@include atXSmall {
+			width: 50%;
+		}
+		@include atSmall {
+			position: absolute;
+			left: 55%;
+			top: 50%;
+			transform: translate(0, -30%);
+			width: 47%;
+		}
+		@include atMedium {
+			transform: translate(0, -50%);
+			width: 40%;
+		}
 	}
 
 	&__btn:hover,
