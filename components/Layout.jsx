@@ -5,6 +5,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import Cart from './Cart'
 
+import { CSSTransition } from 'react-transition-group'
 import { useStateContext } from '../context/stateContext'
 
 const Layout = ({ children }) => {
@@ -18,7 +19,18 @@ const Layout = ({ children }) => {
 			<header>
 				<Navbar />
 			</header>
-			{ showCart && <Cart /> }
+
+			{/* { showCart && <Cart /> } */}
+
+			<CSSTransition
+				in={showCart}
+				timeout={400}
+				classNames="cart__transition"
+				unmountOnExit
+			>
+				<Cart />
+			</CSSTransition>
+
 			<main className="main-container" aria-hidden={showCart}>
 				{ children }
 			</main>

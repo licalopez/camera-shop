@@ -5,14 +5,14 @@ $cart-padding-sm: 1.5rem;
 $cart-padding-lg: 2.75rem;
 $close-btn-padding: 2rem;
 
+
+// CART
 .cart {
 	background-color: rgba($light, 0.65);
 	height: 100%;
 	left: 0;
-	opacity: 1;
 	position: fixed;
 	top: 0;
-	transition: opacity 400ms $cubic-bezier;
 	width: 100%;
 	z-index: 5;
 

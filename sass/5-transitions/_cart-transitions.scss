@@ -1,0 +1,58 @@
+@use '../globals' as *;
+
+.cart__transition {
+	//-------------------- ENTER --------------------//
+	&-enter {
+		opacity: 0;
+
+		.cart__container {
+			transform: translateX(110%);
+		}
+	}
+
+	&-enter-active {
+		opacity: 1;
+		transition: opacity 200ms $cubic-bezier;
+
+		.cart__container {
+			transform: translateX(0%);
+			transition: transform 350ms $cubic-bezier 50ms;
+		}
+	}
+
+	&-enter-done {
+		opacity: 1;
+
+		.cart__container {
+			transform: translateX(0%);
+		}
+	}
+
+	
+	//-------------------- EXIT --------------------//
+	&-exit {
+		opacity: 1;
+
+		.cart__container {
+			transform: translateX(0%);
+		}
+	}
+
+	&-exit-active {
+		opacity: 0;
+		transition: opacity 200ms $cubic-bezier 200ms;
+
+		.cart__container {
+			transform: translateX(110%);
+			transition: transform 350ms $cubic-bezier;
+		}
+	}
+
+	&-exit-done {
+		opacity: 0;
+
+		.cart__container {
+			transform: translateX(110%);
+		}
+	}
+}

@@ -50,7 +50,11 @@ const Cart = () => {
 	}
 
 	return (
-		<section className="cart" aria-hidden={!showCart} onClick={() => setShowCart(false)}>
+		<section 
+			className="cart"
+			aria-hidden={!showCart} 
+			onClick={() => setShowCart(false)}
+		>
 			<div className="cart__container" onClick={e => e.stopPropagation()}>
 				<div className="cart__header">
 					<h2 className="cart__header-heading">
