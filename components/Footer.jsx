@@ -17,11 +17,6 @@ const Footer = () => {
 					<p className="footer__copyright">&copy; Copyright 2022. All rights reserved.</p>
 				</div>
 
-				{/* <div className="footer__center">
-					<ul className="footer__social-icons">
-					</ul>
-				</div> */}
-
 				<div className="footer__right">
 					<p>We Accept</p>
 					<ul className="footer__payment">

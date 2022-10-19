@@ -21,20 +21,14 @@
 
 // IMAGES
 	&__images {
-		// align-items: stretch;
-		// display: flex;
-		// flex-direction: column;
 		gap: 0.5rem;
 		width: 100%;
 
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		grid-template-rows: repeat(5, 1fr);
-		// grid-template-columns: repeat(5, auto);
-		// grid-template-rows: repeat(4, auto);
 
 		@include atXSmall {
-			// flex-direction: row;
 			gap: 1rem;
 			grid-template-columns: repeat(5, 1fr);
 			grid-template-rows: repeat(4, 1fr);
@@ -42,22 +36,18 @@
 		@include atMedium {
 			display: flex;
 			flex-direction: column;
-			// grid-template-columns: repeat()
 			width: 43%;
 		}
 	}
 
 	&__main-image-container {
 		align-items: center;
-		// aspect-ratio: 1;
 		aspect-ratio: 58/45;
 		background-color: $light;
 		display: flex;
 		height: auto;
 		justify-content: center;
-		// width: 100%;
 		transition: padding 150ms $cubic-bezier;
-		// width: 60vw;
 		grid-column: 1 / span 4;
 		grid-row: 1 / span 4;
 
@@ -97,12 +87,9 @@
 	&__thumbnails {
 		align-items: center;
 		display: flex;
-		// gap: 1.25rem;
 		flex-direction: row;
 		justify-content: flex-start;
 		gap: 4%;
-		// width: 35%;
-
 		grid-column: 1 / span 4;
 		grid-row: 5 / span 1;
 
@@ -125,14 +112,10 @@
 		background-color: $light;
 		cursor: pointer;
 		display: flex;
-		// flex-grow: 0;
-		// flex-shrink: 1;
-		// height: 22%;
 		height: auto;
 		justify-content: space-between;
 		padding: 0;
 		width: 22%;
-		// width: 100%;
 
 		@include atXSmall {
 			height: 22%;
@@ -324,13 +307,6 @@
 	}
 
 	&__container {
-		// align-items: flex-start;
-		// display: grid;
-		// gap: 1.5rem;
-		// grid-template-columns: repeat(5, 1fr);
-		// grid-template-rows: 1;
-		// margin: 1.25rem 0;
-
 		margin: 1.25rem 0;
 		overflow-x: hidden;
 		width: 100%;
@@ -358,7 +334,6 @@
 			
 			> * {
 				width: 9.5%;
-				// width: 12.83%;
 
 				@include atSmall {
 					width: 9.5%;

@@ -20,8 +20,6 @@ const Layout = ({ children }) => {
 				<Navbar />
 			</header>
 
-			{/* { showCart && <Cart /> } */}
-
 			<CSSTransition
 				in={showCart}
 				timeout={400}
