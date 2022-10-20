@@ -19,6 +19,9 @@ const Product = ({ product, similarProducts }) => {
 	const [suggestionsIndex, setSuggestionsIndex] = useState(0)  // 0 or 1
 	const { onAddToCart, setShowCart, showCart } = useStateContext()
 
+	// title elements can only have text nodes as children; stringify "name" before injecting into <title>
+	const pageTitle = `Camera Shop - ${name}`
+
 	const handleBuyNow = () => {
 		onAddToCart(product)
 		setShowCart(true)
@@ -54,9 +57,7 @@ const Product = ({ product, similarProducts }) => {
 	return (
 		<div className="product wrapper">
 			<Head>
-				<title>
-					Camera Shop - {name}
-				</title>
+				<title>{ pageTitle }</title>
 			</Head>
 
 			{/* --------------------------------- PRODUCT --------------------------------- */}

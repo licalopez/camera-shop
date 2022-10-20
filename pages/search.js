@@ -12,6 +12,9 @@ import ProductCard from '../components/ProductCard'
 const Search = ({ products, query }) => {
 	const { showCart } = useStateContext()
 
+	// title elements can only have text nodes as children; stringify "name" before injecting into <title>
+	const pageTitle = `Camera Shop - Search results for ${query}`
+
 	const renderNoResultsFound = () => (
 		<div className="search__no-results">
 			<h2 className="search__no-results__heading">
@@ -31,9 +34,7 @@ const Search = ({ products, query }) => {
 	const renderSearchResults = () => (
 		<>
 			<Head>
-				<title>
-					Camera Shop - Search results for {query}
-				</title>
+				<title>{ pageTitle }</title>
 			</Head>
 			<Link href="/brand/all">
 				<a tabIndex={setTabIndex(!showCart)} className="search__results-link">
