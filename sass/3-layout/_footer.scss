@@ -1,6 +1,7 @@
 @use '../globals' as *;
 
 .footer {
+	background-color: $lightest;
 	border-top: 1px solid $light;
 	color: $dark;
 	font-size: 0.85rem;

@@ -90,14 +90,14 @@ const Home = ({ bannerProduct, brands, products }) => {
 
 export const getServerSideProps = async () => {
   const bannerQuery = `*[_type == 'banner']`
-  const bannerProduct = await client.fetch(bannerQuery)
+  const bannerProduct = await client?.fetch(bannerQuery)
 
   const brandQuery = `*[_type == 'brand']`
-  const brands = await client.fetch(brandQuery)
+  const brands = await client?.fetch(brandQuery)
 
   // exclude drafts from being fetched:
   const productQuery =  `*[_type == 'product' && !(_id in path('drafts.**'))][0...8]`
-  const products = await client.fetch(productQuery)
+  const products = await client?.fetch(productQuery)
 
   return {
     props: { bannerProduct, brands, products }
