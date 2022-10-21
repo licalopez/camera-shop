@@ -42,7 +42,7 @@ const Search = ({ products, query }) => {
 				</a>
 			</Link>
 			<div className="product-grid">
-				{products.map(product => <ProductCard key={product._id} product={product} />)}
+				{products?.map(product => <ProductCard key={product?._id} product={product} />)}
 			</div>
 		</>
 	)
@@ -73,12 +73,12 @@ const Search = ({ products, query }) => {
 export const getServerSideProps = async ({ query }) => {
 	const querySansQuotes = query?.q?.replace(/'/g, '').replace(/"/g, '')
 	const searchQuery = `*[_type == 'product' && !(_id in path('drafts.**')) && (name match '${querySansQuotes}' || description[].children[].text match '${querySansQuotes}')]`
-	const products = query.q ? await client.fetch(searchQuery) : null
+	const products = query?.q ? await client.fetch(searchQuery) : null
 
 	return {
 		props: {
 			products,
-			query: query.q || null
+			query: query?.q || null
 		}
 	}
 }
