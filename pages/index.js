@@ -44,7 +44,7 @@ const Home = ({ bannerProduct, brands, products }) => {
         </title>
       </Head>
 
-      <Hero product={ bannerProduct.length > 0 && bannerProduct[0] } />
+      <Hero product={ bannerProduct?.length > 0 && bannerProduct[0] } />
 
       <div className="wrapper__content">
         <section className="best-sellers home-section">
@@ -52,7 +52,7 @@ const Home = ({ bannerProduct, brands, products }) => {
             Best Sellers
           </h2>
           <div className="best-sellers__products product-grid">
-            {products.map(product => (
+            {products?.map(product => (
               <ProductCard key={product._id} product={product} />
             ))}
           </div>
@@ -81,7 +81,7 @@ const Home = ({ bannerProduct, brands, products }) => {
           <h2 className="home-heading">
             Featured Deals
           </h2>
-          {bannerProduct.length > 1 && bannerProduct[1] && renderBanner(bannerProduct[1])}
+          {bannerProduct?.length > 1 && bannerProduct[1] && renderBanner(bannerProduct[1])}
         </section>
       </div>
     </div>
