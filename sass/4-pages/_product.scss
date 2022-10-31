@@ -21,18 +21,19 @@
 
 // IMAGES
 	&__images {
+		border: 1px solid green;
 		display: grid;
 		gap: 0.5rem;
 		grid-template-columns: repeat(4, auto);
 		grid-template-rows: repeat(5, auto);
 		width: 100%;
 
-		@include atXSmall {
-			gap: 1rem;
-			grid-template-columns: repeat(5, auto);
-			grid-template-rows: repeat(4, auto);
-			max-height: none;
-		}
+		// @include atXSmall {
+		// 	gap: 1rem;
+		// 	grid-template-columns: repeat(5, auto);
+		// 	grid-template-rows: repeat(4, auto);
+		// 	max-height: none;
+		// }
 		@include atMedium {
 			display: flex;
 			flex-direction: column;
@@ -52,11 +53,12 @@
 		grid-column: 1 / span 4;
 		grid-row: 1 / span 4;
 
-		@include atXSmall {
-			aspect-ratio: 58/45;
-			grid-column: 1 / span 4;
-			grid-row: 1 / span 4;
-		}
+		// @include atXSmall {
+		// 	// aspect-ratio: 58/45;
+		// 	aspect-ratio: 1;
+		// 	grid-column: 1 / span 4;
+		// 	grid-row: 1 / span 4;
+		// }
 		@include atMedium {
 			width: auto;
 		}
@@ -87,6 +89,7 @@
 	}
 
 	&__thumbnails {
+		border: 1px solid orange;
 		align-items: center;
 		display: flex;
 		flex-direction: row;
@@ -96,12 +99,12 @@
 		height: min-content;
 		justify-content: flex-start;
 
-		@include atXSmall {
-			flex-direction: column;
-			grid-column: 5 / span 1;
-			grid-row: 1 / span 4;
-			height: auto;
-		}
+		// @include atXSmall {
+		// 	flex-direction: column;
+		// 	grid-column: 5 / span 1;
+		// 	grid-row: 1 / span 4;
+		// 	// max-height: 100%;
+		// }
 		@include atMedium {
 			flex-direction: row;
 			gap: 4%;       // (22% * 4) width of thumbnail-container + (4% * 3) gap = 100
@@ -121,11 +124,11 @@
 		padding: 0;
 		width: 22%;
 
-		@include atXSmall {
-			height: 22%;
-			justify-content: center;
-			width: auto;
-		}
+		// @include atXSmall {
+		// 	// height: 22%;
+		// 	justify-content: center;
+		// 	width: auto;
+		// }
 		@include atMedium {
 			height: auto;
 			width: 22%;   // (22% * 4) width of thumbnail-container + (4% * 3) gap = 100
@@ -134,9 +137,9 @@
 		&.transparent-bg {
 			padding: 0.45rem;
 
-			@include atXSmall {
-				padding: 0.65rem;
-			}
+			// @include atXSmall {
+			// 	padding: 0.65rem;
+			// }
 
 			img.product__thumbnail {
 				height: auto;
@@ -153,10 +156,11 @@
 			object-fit: cover;
 			width: 100%;
 
-			@include atXSmall {
-				aspect-ratio: auto;
-				height: 100%;
-			}
+			// @include atXSmall {
+			// 	aspect-ratio: auto;
+			// 	height: 100%;
+			// 	width: auto;
+			// }
 		}
 
 		&:hover {
