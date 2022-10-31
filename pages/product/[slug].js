@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { toast } from 'react-hot-toast'
 
@@ -18,6 +18,9 @@ const Product = ({ product, similarProducts }) => {
 	const [mainImgIndex, setMainImgIndex] = useState(0)
 	const [suggestionsIndex, setSuggestionsIndex] = useState(0)  // 0 or 1
 	const { onAddToCart, setShowCart, showCart } = useStateContext()
+
+	// reset mainImgIndex to 0 when slug/product changes — prevents unwanted effects when mainImgIndex of previous product is greater than productImages.length of next product
+	useEffect(() => setMainImgIndex(0), [product])
 
 	// title elements can only have text nodes as children; stringify "name" before injecting into <title>
 	const headTitle = `Camera Shop - ${name}`
@@ -54,6 +57,31 @@ const Product = ({ product, similarProducts }) => {
 			: (paragraphsArray.map((text, i) => <p key={i}>{text}</p>))
 	}
 
+	const renderProductImages = () => (
+		<div className="product__images">
+			<div className={`product__main-image-container ${productImages[mainImgIndex]?.isTransparent ? 'transparent-bg' : ''}`}>
+				<img 
+					src={urlFor(productImages[mainImgIndex].image)} 
+					alt={productImages[mainImgIndex].alt} 
+					className="product__main-image"
+				/>
+			</div>
+			<div className="product__thumbnails">
+				{productImages
+					.filter((_, i) => i < 4)
+					.map((imageObj, i) => (
+						<div 
+							key={i}
+							className={`product__thumbnail-container ${imageObj.isTransparent ? 'transparent-bg' : ''}`}
+							onClick={() => setMainImgIndex(i)}
+						>
+							<img src={urlFor(imageObj.image)} alt={imageObj.alt} className="product__thumbnail" />
+						</div>
+				))}
+			</div>
+		</div>
+	)
+
 	return (
 		<div className="product wrapper">
 			<Head>
@@ -62,28 +90,7 @@ const Product = ({ product, similarProducts }) => {
 
 			{/* --------------------------------- PRODUCT --------------------------------- */}
 			<div className="product__container">
-				<div className="product__images">
-					<div className={`product__main-image-container ${productImages[mainImgIndex].isTransparent ? 'transparent-bg' : ''}`}>
-						<img 
-							src={urlFor(productImages[mainImgIndex].image)} 
-							alt={productImages[mainImgIndex].alt} 
-							className="product__main-image"
-						/>
-					</div>
-					<div className="product__thumbnails">
-						{productImages
-							.filter((_, i) => i < 4)
-							.map((imageObj, i) => (
-								<div 
-									key={i}
-									className={`product__thumbnail-container ${imageObj.isTransparent ? 'transparent-bg' : ''}`}
-									onClick={() => setMainImgIndex(i)}
-								>
-									<img src={urlFor(imageObj.image)} alt={imageObj.alt} className="product__thumbnail" />
-								</div>
-						))}
-					</div>
-				</div>
+				{ productImages && productImages[mainImgIndex] ? renderProductImages() : null }
 
 				<div className="product__text">
 					<h1 className="product__name">

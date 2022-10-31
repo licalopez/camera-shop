@@ -60,13 +60,15 @@ const Brand = ({ brandName, brands, products }) => {
 						<div className="brand__products">
 							{/* ----------------------------- BRAND FILTERS ----------------------------- */}
 							<div className="brand__products__filters">
-								<h3 className="brand__products__filters-heading">
+								<h3 
+									className="brand__products__filters-heading"
+									onClick={() => setShowFilters(!showFilters)}
+								>
 									Brands 
 
 									<span 
 										aria-label={showFilters ? 'Hide brand filters' : 'Show brand filters'}
 										className={`chevron ${showFilters ? 'hide-filters' : ''}`}
-										onClick={() => setShowFilters(!showFilters)}
 									>
 										<ChevronDown />
 									</span>

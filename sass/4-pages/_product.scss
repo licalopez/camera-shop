@@ -42,7 +42,8 @@
 
 	&__main-image-container {
 		align-items: center;
-		aspect-ratio: 58/45;
+		aspect-ratio: auto;
+		// aspect-ratio: 58/45;
 		background-color: $light;
 		display: flex;
 		height: auto;
@@ -52,6 +53,7 @@
 		grid-row: 1 / span 4;
 
 		@include atXSmall {
+			aspect-ratio: 58/45;
 			grid-column: 1 / span 4;
 			grid-row: 1 / span 4;
 		}
@@ -88,15 +90,17 @@
 		align-items: center;
 		display: flex;
 		flex-direction: row;
-		justify-content: flex-start;
 		gap: 4%;
 		grid-column: 1 / span 4;
 		grid-row: 5 / span 1;
+		height: min-content;
+		justify-content: flex-start;
 
 		@include atXSmall {
 			flex-direction: column;
 			grid-column: 5 / span 1;
 			grid-row: 1 / span 4;
+			height: auto;
 		}
 		@include atMedium {
 			flex-direction: row;
