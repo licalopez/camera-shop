@@ -26,6 +26,7 @@
 	}
 
 	.search-bar {
+		align-items: stretch;
 		box-shadow: 0rem 0.1rem 0.45rem rgba($dark, 0.14);
 		display: flex;
 		height: 3.25rem;
@@ -40,6 +41,7 @@
 		}
 
 		&__input {
+			appearance: none;   // removes default search icon on input field; redundant due to icon on submit btn
 			background-color: #ffffff;
 			border: 1px solid rgba($dark, 0.65);
 			border: none;
@@ -47,6 +49,8 @@
 			color: $dark;
 			flex: 1;
 			font-size: 1.25rem;
+			height: 100%;
+			outline: none!important;       // overwrite default focus style on ios
 			padding: 0.25rem 1.25rem;
 			width: 100%;
 
@@ -54,9 +58,16 @@
 				padding: 0.25rem 1.75rem;
 			}
 
+			&:focus:not(.focus-visible) {   // overwrite default focus style on ios
+				border: 2px solid $accent!important;
+				outline: none!important;
+			}
+
+			&:active,
+			&:focus,
 			&:focus-visible {
-				border: 2px solid $accent;
-				outline: none;
+				border: 2px solid $accent!important;
+				outline: none!important;
 			}
 
 			&::placeholder {
@@ -71,6 +82,8 @@
 			border: none;
 			border-radius: 0rem 0.2rem 0.2rem 0;
 			cursor: pointer;
+			flex: 0;
+			height: 100%;
 
 			&:focus-visible {
 				border: 2px solid $dark;

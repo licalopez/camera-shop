@@ -5,7 +5,8 @@
 	align-items: center;
 	background-color: $lightest;
 	display: flex;
-	height: $navbar-default;
+	height: $navbar-default-height;
+	// position: fixed;
 	position: relative;
 	z-index: 2;
 	width: 100%;
@@ -23,6 +24,7 @@
 		height: 100%;
 		margin-left: $navbar-default - 1.8rem;
 		position: relative;
+		width: auto;
 		z-index: 4;
 
 		@include atXSmall {
@@ -92,7 +94,7 @@
 		overflow: hidden;
 		padding: 1.3rem 0;
 		position: absolute;
-		top: $navbar-default;
+		top: $navbar-default-height;
 		transform: translateY(0%);
 		transition: height 350ms $cubic-bezier,
 		            padding 350ms $cubic-bezier;
@@ -127,8 +129,16 @@
 				text-decoration: none;
 				padding: 0.5rem 2rem;
 				width: 100%;
+				outline: none;
 
-				&:focus-visible {
+				&:focus:not(.focus-visible) {
+					background-color: rgba($lightest, 0.2);
+					outline: none;
+				}
+
+				&:focus,
+				&:focus-visible,
+				&:hover {
 					background-color: rgba($lightest, 0.2);
 					outline: none;
 				}
@@ -202,7 +212,8 @@
 	gap: .75rem;
 	height: 100%;
 	margin-left: auto;
-	margin-right: $navbar-default - 1.7rem;  // offset button's 1.8rem right padding
+	margin-right: $navbar-default - 2.2rem;
+	width: auto;
 
 	@include atXSmall {
 		margin-right: $navbar-xs - 1rem;  // offset button's 1rem right padding
@@ -213,8 +224,9 @@
 
 	button {
 		@include mixins.reset-btn-style;
+		aspect-ratio: 1;
 		height: 3.25rem;
-		padding: 1rem;
+		padding: 1rem 0;
 		position: relative;
 		width: auto;
 
@@ -235,12 +247,6 @@
 
 		&:focus-visible {
 			outline: 2px solid $accent;
-		}
-	}
-
-	&__cart {
-		svg {
-			height: 97%; // too tall
 		}
 	}
 

@@ -20,7 +20,7 @@ const Product = ({ product, similarProducts }) => {
 	const { onAddToCart, setShowCart, showCart } = useStateContext()
 
 	// title elements can only have text nodes as children; stringify "name" before injecting into <title>
-	const pageTitle = `Camera Shop - ${name}`
+	const headTitle = `Camera Shop - ${name}`
 
 	const handleBuyNow = () => {
 		onAddToCart(product)
@@ -57,7 +57,7 @@ const Product = ({ product, similarProducts }) => {
 	return (
 		<div className="product wrapper">
 			<Head>
-				<title>{ pageTitle }</title>
+				<title>{ headTitle }</title>
 			</Head>
 
 			{/* --------------------------------- PRODUCT --------------------------------- */}

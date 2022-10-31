@@ -4,7 +4,7 @@
 	background: $light;
 	color: $dark;
 	min-height: none;
-	padding: 2rem 2rem 3.25rem;
+	padding: 2rem 2rem 2.5rem;
 	position: relative;
 	width: 100%;
 
@@ -36,9 +36,12 @@
 	}
 
 	.hero-subheading {
-		font-size: 1.2rem;
+		font-size: 1rem;
 		font-weight: 500;
 
+		@include atXSmall {
+			font-size: 1.2rem;
+		}
 		@include atSmall {
 			font-size: 1.5rem;
 		}

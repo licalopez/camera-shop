@@ -2,13 +2,22 @@
 @use '../1-config/mixins';
 
 .home-section {
-	padding: 3.5rem 0;
+	padding: 2.75rem 0;
+
+	@include atSmall {
+		padding: 3.5rem 0;
+	}
 }
 
 .home-heading {
-	font-size: 2rem;
+	font-size: 1.8rem;
 	font-weight: 700;
-	margin-bottom: 1.25rem;
+	margin-bottom: 0.75rem;
+
+	@include atXSmall {
+		font-size: 2rem;
+		margin-bottom: 1.25rem;
+	}
 }
 
 /*****************************
@@ -25,8 +34,12 @@
 		background-color: rgba($light, 0.3);
 		display: flex;
 		justify-content: center;
-		margin-bottom: 0.5rem;
+		margin-bottom: 0.25rem;
 		transition: background-color 300ms $cubic-bezier;
+
+		@include atXSmall {
+			margin-bottom: 0.5rem;
+		}
 	}
 
 	&__image {
@@ -46,8 +59,13 @@
 	}
 
 	&__name {
-		font-size: 1.1rem;
+		color: $dark;
+		font-size: 1rem;
 		font-weight: 700;
+
+		@include atXSmall {
+			font-size: 1.1rem;
+		}
 	}
 
 	&__price {
@@ -62,6 +80,7 @@
 .brands {
 	&__container {
 		display: grid;
+		gap: 0;
 		grid-template-columns: repeat(2, 1fr); 
 
 		@include atXSmall {
@@ -80,13 +99,12 @@
 
 	&__card {
 		@include mixins.reset-btn-style;
-		align-items: center;
 		aspect-ratio: 1;
 		border: 1px solid $light;
 		cursor: pointer;
-		display: flex;
-		justify-content: center;
+		margin: 0;
 		margin-right: -1px;
+		margin-top: -1px;
 		padding: .5rem 1rem;
 
 		@include atXSmall {
@@ -133,7 +151,6 @@
 		width: 100%;
 
 		@include atSmall {
-			// aspect-ratio: 1430/550;
 			min-height: 28rem;
 			padding: 2.5rem 4rem;
 		}

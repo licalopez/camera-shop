@@ -117,9 +117,19 @@
 				
 				a {
 					color: rgba($dark, 0.9);
+					outline: none;
 					text-decoration: none;
 					transition: color 200ms $cubic-bezier,
 											font-weight 100ms $cubic-bezier;
+
+					&:focus:not(.focus-visible) {
+						border-bottom: 2px solid $accent;
+						color: $accent;
+						font-weight: 700;
+						outline: none;
+						transition: color 200ms $cubic-bezier,
+												font-weight 100ms $cubic-bezier;
+					}
 
 					&:focus-visible,
 					&:hover {

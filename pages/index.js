@@ -44,7 +44,7 @@ const Home = ({ bannerProduct, brands, products }) => {
         </title>
       </Head>
 
-      <Hero product={ bannerProduct?.length > 0 && bannerProduct[0] } />
+      <Hero product={ bannerProduct.length > 0 && bannerProduct[0] } />
 
       <div className="wrapper__content">
         <section className="best-sellers home-section">
@@ -52,7 +52,7 @@ const Home = ({ bannerProduct, brands, products }) => {
             Best Sellers
           </h2>
           <div className="best-sellers__products product-grid">
-            {products?.map(product => (
+            {products.map(product => (
               <ProductCard key={product._id} product={product} />
             ))}
           </div>
@@ -63,7 +63,7 @@ const Home = ({ bannerProduct, brands, products }) => {
             Brand Showcase
           </h2>
           <div className="brands__container">
-            {brands?.map(brand => (
+            {brands.map(brand => (
               <Link href={`/brand/${brand.slug.current}`} key={brand._id}>
                 <button className="brands__card" aria-label={brand.name} tabIndex={setTabIndex(!showCart)}>
                   <img 
@@ -81,7 +81,7 @@ const Home = ({ bannerProduct, brands, products }) => {
           <h2 className="home-heading">
             Featured Deals
           </h2>
-          {bannerProduct?.length > 1 && bannerProduct[1] && renderBanner(bannerProduct[1])}
+          {bannerProduct.length > 1 && bannerProduct[1] && renderBanner(bannerProduct[1])}
         </section>
       </div>
     </div>
@@ -90,14 +90,14 @@ const Home = ({ bannerProduct, brands, products }) => {
 
 export const getServerSideProps = async () => {
   const bannerQuery = `*[_type == 'banner']`
-  const bannerProduct = await client?.fetch(bannerQuery)
+  const bannerProduct = await client.fetch(bannerQuery)
 
   const brandQuery = `*[_type == 'brand']`
-  const brands = await client?.fetch(brandQuery)
+  const brands = await client.fetch(brandQuery)
 
   // exclude drafts from being fetched:
   const productQuery =  `*[_type == 'product' && !(_id in path('drafts.**'))][0...8]`
-  const products = await client?.fetch(productQuery)
+  const products = await client.fetch(productQuery)
 
   return {
     props: { bannerProduct, brands, products }

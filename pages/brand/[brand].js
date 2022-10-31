@@ -110,9 +110,9 @@ export const getStaticPaths = async () => {
 	}`
 
 	const brands = await client.fetch(brandNamesQuery)
-	let paths = brands.map(brand => ({
+	let paths = brands?.map(brand => ({
 		params: {
-			brand: brand.slug.current
+			brand: brand?.slug?.current
 		}
 	}))
 
