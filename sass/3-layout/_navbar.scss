@@ -6,7 +6,6 @@
 	background-color: $lightest;
 	display: flex;
 	height: $navbar-default-height;
-	// position: fixed;
 	position: relative;
 	z-index: 2;
 	width: 100%;
@@ -186,6 +185,7 @@
 		}
 
 		&__input {
+			appearance: none;  // hide default search icon on 'search' input field
 			background-color: transparent;
 			border: none;
 			color: rgba($dark, 0.75);
